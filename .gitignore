@@ -52,4 +52,5 @@ RemoteSystemsTempFiles
 .cproject
 .project
 .settings
+.ipynb_checkpoints
 

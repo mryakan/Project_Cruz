@@ -311,7 +311,7 @@ def download_and_extract_dataset():
 
 def main():
     """main fn"""
-    download_and_extract_dataset()
+    #download_and_extract_dataset()
     return True
 
 if __name__ == '__main__':
