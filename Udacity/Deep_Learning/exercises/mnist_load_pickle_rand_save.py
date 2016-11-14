@@ -311,6 +311,7 @@ def merge_datasets(pickle_files, train_size, valid_size=0):
             with open(pickle_file, 'rb') as f:
                 print("Loading %s as label %s" % (pickle_file, label))
                 letter_set = pickle.load(f)
+                print('Size of data set: %s' % len(letter_set))
                 # let's shuffle the letters to have random validation and training set
                 np.random.shuffle(letter_set) # pylint: disable=E1101
                 if valid_dataset is not None:
