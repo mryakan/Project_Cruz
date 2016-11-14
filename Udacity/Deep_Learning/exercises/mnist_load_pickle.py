@@ -258,6 +258,8 @@ def load_letter(folder, min_num_images):
 
 def maybe_pickle(data_folders, min_num_images_per_class, force=False):
     """Pickle the dataset"""
+    if not data_folders:
+        return None
     dataset_names = []
     for folder in data_folders:
         set_filename = folder + '.pickle'
@@ -282,8 +284,9 @@ def pickle_datasets(train_folders, test_folders):
     test_datasets = maybe_pickle(test_folders, 1800, force=False)
     return train_datasets, test_datasets
 
-def make_arrays(nb_rows, img_size):
+def make_arrays(nb_rows, img_size, name=""):
     """make ndarrays"""
+    print("Making %s Array with %s rows and img_size %s" % (name, nb_rows, img_size))
     if nb_rows:
         dataset = np.ndarray((nb_rows, img_size, img_size), dtype=np.float32) # pylint: disable=E1101
         labels = np.ndarray(nb_rows, dtype=np.int32)
@@ -294,17 +297,19 @@ def make_arrays(nb_rows, img_size):
 def merge_datasets(pickle_files, train_size, valid_size=0):
     """Merge the datasets"""
     num_classes = len(pickle_files)
-    valid_dataset, valid_labels = make_arrays(valid_size, image_size)
-    train_dataset, train_labels = make_arrays(train_size, image_size)
+    valid_dataset, valid_labels = make_arrays(valid_size, image_size, "v")
+    train_dataset, train_labels = make_arrays(train_size, image_size, "t")
     vsize_per_class = valid_size // num_classes
     tsize_per_class = train_size // num_classes
 
     start_v, start_t = 0, 0
     end_v, end_t = vsize_per_class, tsize_per_class
     end_l = vsize_per_class+tsize_per_class
+    #print(num_classes, vsize_per_class, tsize_per_class)
     for label, pickle_file in enumerate(pickle_files):
         try:
             with open(pickle_file, 'rb') as f:
+                print("Loading %s as label %s" % (pickle_file, label))
                 letter_set = pickle.load(f)
                 # let's shuffle the letters to have random validation and training set
                 np.random.shuffle(letter_set) # pylint: disable=E1101
