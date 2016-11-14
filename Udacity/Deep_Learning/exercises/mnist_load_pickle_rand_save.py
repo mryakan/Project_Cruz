@@ -220,6 +220,7 @@ https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity
 import os
 import sys
 import pickle
+from hashlib import sha1
 import numpy as np
 from scipy import ndimage
 
@@ -358,6 +359,23 @@ def find_folders(train_foldername, test_foldername):
     test_folders = [os.path.join(test_dir, d) for d in os.listdir(test_dir) if not d.endswith(".pickle")]
     return train_folders, test_folders
 
+def hash_set(dataset):
+    """Return an MD5 hash set of the dataste"""
+    return set(map(lambda x: sha1(x).hexdigest(), dataset))
+
+def measure_overlap(train_dataset, valid_dataset, test_dataset):
+    """Test for overlap between various datasets"""
+     #We will use hasing to measure the overlap between something
+    train_dataset_h = hash_set(train_dataset)
+    valid_dataset_h = hash_set(valid_dataset)
+    test_dataset_h = hash_set(test_dataset)
+
+    # Measure overlaps
+    train_valid_overlap = train_dataset_h - valid_dataset_h
+    train_test_overlap = train_dataset_h - test_dataset_h
+    valid_test_overlap = test_dataset_h - valid_dataset_h
+    return train_valid_overlap, train_test_overlap, valid_test_overlap
+
 def save_data(pickle_file,
               train_dataset, train_labels,
               valid_dataset, valid_labels,
@@ -413,6 +431,13 @@ def main():
     train_dataset, train_labels = randomize(train_dataset, train_labels)
     valid_dataset, valid_labels = randomize(valid_dataset, valid_labels)
     test_dataset, test_labels = randomize(test_dataset, test_labels)
+    # Measure overlap between datasets
+    train_valid_overlap, train_test_overlap, valid_test_overlap = \
+        measure_overlap(train_dataset, valid_dataset, test_dataset)
+    print('Overlap between training and validation datasets: %s' % len(train_valid_overlap))
+    print('Overlap between training and test datasets: %s' % len(train_test_overlap))
+    print('Overlap between test and validation datasets: %s'  % len(valid_test_overlap))
+
     # Finally, let's save the data for later reuse
     pickle_file = 'notMNIST.pickle'
     save_data(pickle_file,
