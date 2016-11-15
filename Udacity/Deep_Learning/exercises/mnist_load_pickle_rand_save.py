@@ -209,7 +209,8 @@
 # Modification history:
 # ====================
 # - <2016-Nov-09> by "Medhat R.Yakan": Adding docstrings + some refactoring
-#
+# - <2016-Nov-14> by "Medhat R. Yakan": Additional code for overlap + sanitization
+#       (based on "https://github.com/MaxKHK/Udacity_DeepLearningAssignments/blob/master/Assignment1/1_notmnist.ipynb")
 #
 
 """
@@ -340,15 +341,8 @@ def randomize(dataset, labels):
     shuffled_labels = labels[permutation]
     return shuffled_dataset, shuffled_labels
 
-def find_folders(train_foldername, test_foldername):
+def find_folders(topdir, train_foldername, test_foldername):
     """Find and return 2 lists containing respective folder names for each of the datasets"""
-    topdir = input("Enter top level directory containing training and test folders [default='.']:\n")
-    if not topdir or topdir == '.':
-        topdir = os.getcwd()
-    ndir = os.path.abspath(topdir)
-    if not os.path.exists(ndir) or not os.path.isdir(ndir):
-        print("ERROR: Invalid Directory '%s'" % ndir)
-        return None, None
     train_dir = os.path.join(topdir, train_foldername)
     test_dir = os.path.join(topdir, test_foldername)
     for adir in [train_dir, test_dir]:
@@ -366,15 +360,25 @@ def hash_set(dataset):
 def measure_overlap(train_dataset, valid_dataset, test_dataset):
     """Test for overlap between various datasets"""
      #We will use hasing to measure the overlap between something
+    print("Measureing overlap between datasets...")
     train_dataset_h = hash_set(train_dataset)
     valid_dataset_h = hash_set(valid_dataset)
     test_dataset_h = hash_set(test_dataset)
 
     # Measure overlaps
-    train_valid_overlap = train_dataset_h - valid_dataset_h
-    train_test_overlap = train_dataset_h - test_dataset_h
-    valid_test_overlap = test_dataset_h - valid_dataset_h
-    return train_valid_overlap, train_test_overlap, valid_test_overlap
+    train_overlap = len(train_dataset) - len(train_dataset_h)
+    train_valid_overlap = len(train_dataset_h) - len(train_dataset_h - valid_dataset_h)
+    train_test_overlap = len(train_dataset_h) - len(train_dataset_h - test_dataset_h)
+    valid_overlap = len(valid_dataset) - len(valid_dataset_h)
+    valid_test_overlap = len(valid_dataset_h) - len(valid_dataset_h - test_dataset_h)
+    test_overlap = len(test_dataset) - len(test_dataset_h)
+    print('Overlap within training dataset: %s' % (train_overlap))
+    print('Overlap between training and validation datasets: %s' % (train_valid_overlap))
+    print('Overlap between training and test datasets: %s' % (train_test_overlap))
+    print('Overlap within validation dataset: %s' % (valid_overlap))
+    print('Overlap between validation and test datasets: %s'  % (valid_test_overlap))
+    print('Overlap within test dataset: %s' % (test_overlap))
+    return train_overlap, train_valid_overlap, train_test_overlap, valid_overlap, valid_test_overlap, test_overlap
 
 def save_data(pickle_file,
               train_dataset, train_labels,
@@ -401,16 +405,80 @@ def save_data(pickle_file,
     print('Compressed pickle size:', statinfo.st_size)
     return True
 
+def sanitize_datasets(pickle_file, train_size, valid_size, test_size):
+    """Sanitize the data by removing duplicates and saving into seperate file"""
+    # Read datasets from pickle file
+    try:
+        with open(pickle_file, 'rb') as f:
+            datasets = pickle.load(f)
+            f.close()
+    except Exception as e:
+        print('Unable to read data from', pickle_file, ':', e)
+        raise
+    # Concatenate into one ndarray
+    all_labels = np.concatenate((datasets['train_labels'],
+                                 datasets['valid_labels'],
+                                 datasets['test_labels']))
+    all_data = np.concatenate((datasets['train_dataset'],
+                               datasets['valid_dataset'],
+                               datasets['test_dataset']))
+    # Now create a list for the sanitized data (non-duplicates)
+    sanitized_data = []
+    sanitized_labels = []
+    hashes = set()
+    datasize = len(all_labels)
+    duplicates = 0
+    print("Dataset size to sanitize is %s (tr=%s,va=%s,te=%s)" % (datasize, train_size, valid_size, test_size))
+    for i in range(0, datasize):
+        # check if hash is in hashe set else add
+        shahash = sha1(all_data[i]).hexdigest()
+        if shahash in hashes:
+            duplicates += 1
+        else:
+            sanitized_data.append(all_data[i])
+            sanitized_labels.append(all_labels[i])
+            hashes.add(shahash)
+    print("Eliminated %s duplicates" % duplicates)
+    datasize = len(sanitized_data)
+    sanitized_data = np.stack(sanitized_data)
+    sanitized_labels = np.stack(sanitized_labels)
+
+    # Split the dataset (<-train_size-><-valid_size-><-test_size->)
+    # training datatset is whatever is left
+    train_size_n = datasize - valid_size - test_size
+    print("New dataset size is %s (tr=%s,va=%s,te=%s)" % (datasize, train_size_n, valid_size, test_size))
+    test_dataset = sanitized_data[-test_size:]
+    test_labels = sanitized_labels[-test_size:]
+    valid_dataset = sanitized_data[-test_size-valid_size:-valid_size]
+    valid_labels = sanitized_labels[-test_size-valid_size:-valid_size]
+    train_dataset = sanitized_data[:train_size_n]
+    train_labels = sanitized_labels[:train_size_n]
+    return train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels
+
+
 def main():
     """main fn"""
     train_foldername = 'notMNIST_large'
     test_foldername = 'notMNIST_small'
-    train_folders, test_folders = find_folders(train_foldername, test_foldername)
-    print("Training Folders\n%s" % train_folders)
-    print("Test Folders\n%s" % test_folders)
+    # Prompt for top directory where mnist folders are located
+    topdir = input("Enter top level directory containing training and test folders [default='.']:\n")
+    if not topdir or topdir == '.':
+        topdir = os.getcwd()
+    ndir = os.path.abspath(topdir)
+    if not os.path.exists(ndir) or not os.path.isdir(ndir):
+        print("ERROR: Invalid Directory '%s'" % ndir)
+        return None, None
+    # Find the list of available folders
+    train_folders, test_folders = find_folders(topdir, train_foldername, test_foldername)
+    print("Found the following Training/Validation Folders:\n%s" % train_folders)
+    print("Found the following Test Folders:\n%s" % test_folders)
+
+    # Pickle the data
+    print("Pickling the data...")
     train_datasets, test_datasets = pickle_datasets(train_folders, test_folders)
-    print("Pickled Training Datatsets\n%s" % train_datasets)
-    print("Pickled Test Datasets\n%s" % test_datasets)
+    print("Pickled Training Datatsets:\n%s" % train_datasets)
+    print("Pickled Test Datasets:\n%s" % test_datasets)
+
     # Another check: we expect the data to be balanced across classes. Verify that.
     # Merge and prune the training data as needed.
     # Depending on your computer setup, you might not be able to fit it all in memory,
@@ -426,21 +494,39 @@ def main():
     print('Training:', train_dataset.shape, train_labels.shape)
     print('Validation:', valid_dataset.shape, valid_labels.shape)
     print('Testing:', test_dataset.shape, test_labels.shape)
+
     # Next, we'll randomize the data.
     # It's important to have the labels well shuffled for the training and test distributions to match.
     train_dataset, train_labels = randomize(train_dataset, train_labels)
     valid_dataset, valid_labels = randomize(valid_dataset, valid_labels)
     test_dataset, test_labels = randomize(test_dataset, test_labels)
+
     # Measure overlap between datasets
-    train_valid_overlap, train_test_overlap, valid_test_overlap = \
-        measure_overlap(train_dataset, valid_dataset, test_dataset)
-    print('Overlap between training and validation datasets: %s' % len(train_valid_overlap))
-    print('Overlap between training and test datasets: %s' % len(train_test_overlap))
-    print('Overlap between test and validation datasets: %s'  % len(valid_test_overlap))
+    measure_overlap(train_dataset, valid_dataset, test_dataset)
 
     # Finally, let's save the data for later reuse
-    pickle_file = 'notMNIST.pickle'
+    print("Saving pickled data...")
+    pickle_file = os.path.join(topdir, 'notMNIST.pickle')
     save_data(pickle_file,
+              train_dataset, train_labels,
+              valid_dataset, valid_labels,
+              test_dataset, test_labels)
+
+    # Now create a sanitized dataset containing no overlap and save for later
+    print("Sanitizing dataset to elmiminate duplicates...")
+    train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels = \
+        sanitize_datasets(pickle_file, train_size, valid_size, test_size)
+    print('Sanitized Training:', train_dataset.shape, train_labels.shape)
+    print('Sanitized Validation:', valid_dataset.shape, valid_labels.shape)
+    print('Sanitized Testing:', test_dataset.shape, test_labels.shape)
+
+    # Measure overlap between datasets (should be all 0s)
+    measure_overlap(train_dataset, valid_dataset, test_dataset)
+
+    # Save sanitized data
+    print("Saving sanitized pickled data...")
+    sanitize_pickle_file = pickle_file.replace('.pickle', '_sanitized.pickle')
+    save_data(sanitize_pickle_file,
               train_dataset, train_labels,
               valid_dataset, valid_labels,
               test_dataset, test_labels)
