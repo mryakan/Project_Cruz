@@ -140,7 +140,8 @@ def main():
             print("Training Logistic Regression classifier on %s (CV=%s)..." % (datasel[1], cv))
             _, scores = train_logreg(datasel[0], datasizes, cv)
             for i, datasize in enumerate(datasizes):
-                print("Mean accuracy for %s using %s samples: %s" % (datasel[1], datasize, scores[i].mean()))
+                print("Mean accuracy for %s using %s samples: %s" %
+                      (datasel[1], (datasize if datasize else len(datasel[0]['train_dataset'])), scores[i].mean()))
     return True
 
 if __name__ == '__main__':
