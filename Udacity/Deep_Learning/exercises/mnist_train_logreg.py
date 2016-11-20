@@ -39,7 +39,7 @@ Train a logistic regression classifier on the mnist data to solve Problem 6 stat
 
 import os
 import sys
-import pickle
+from mnist_common import prompt_topdir, load_datasets
 from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
 from sklearn.model_selection import cross_val_score
 
@@ -82,48 +82,26 @@ def train_logreg(datasets, datasizes, use_cv):
         scores.append(score)
     return result, scores
 
-def load_dataset(pickle_file):
-    """Load the data"""
-    try:
-        with open(pickle_file, 'rb') as f:
-            datasets = pickle.load(f)
-            f.close()
-    except IOError as e:
-        print('ERROR: Unable to open file', pickle_file, ':', e)
-        return None
-    except EOFError as e:
-        print('ERROR: Unable to read data from', pickle_file, ':', e)
-        return None
-    except pickle.UnpicklingError as e:
-        print('ERROR: Unable to unpickle data from', pickle_file, ':', e)
-        return None
-    return datasets
-
 def main():
     """main fn"""
     # Prompt for top directory where mnist folders are located
-    topdir = input("Enter top level directory containing the pickled dataset files [default='.']:\n")
-    if not topdir or topdir == '.':
-        topdir = os.getcwd()
-    ndir = os.path.abspath(topdir)
-    if not os.path.exists(ndir) or not os.path.isdir(ndir):
-        print("ERROR: Invalid Directory '%s'" % ndir)
+    topdir = prompt_topdir("pickled dataset files")
+    if not topdir:
         return None, None
-
     # Pickled datasets, both original and sanitized
     dataset_filename = 'notMNIST.pickle'
     reg_file = os.path.join(topdir, dataset_filename)
     san_file = reg_file.replace('.pickle', '_sanitized.pickle')
     # Let's load the datasets
     print("Trying to load regular dataset from pickle file", reg_file, '...')
-    reg_data = load_dataset(reg_file)
+    reg_data = load_datasets(reg_file)
     if not reg_data:
         print("ERROR: Unable to load regular dataset. Aborting!")
         return False
     print("Loaded regular data.")
     #print('label', reg_data['train_labels'][1], ':\n', reg_data['train_dataset'][1])
     print("Trying to load sanitized dataset from pickle file", reg_file, '...')
-    san_data = load_dataset(san_file)
+    san_data = load_datasets(san_file)
     print("Trying to load sanitized dataset from pickle file", reg_file, '...')
     if not san_data:
         print("ERROR: Unable to load sanitized dataset. Skipping it!")
