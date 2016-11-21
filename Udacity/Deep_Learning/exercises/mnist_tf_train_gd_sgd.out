@@ -317,3 +317,317 @@ Validation accuracy: 78.3%
 @Done
 Test accuracy: 86.0%
 Training completed (elapsed time = 2134.528819322586 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent (num_steps=2050)...
+@Initialized...
+@step 0
+Minibatch Loss: 18.366716
+Minibatch accuracy: 9.4%
+Validation accuracy: 11.1%
+@step 100
+Minibatch Loss: 2.654400
+Minibatch accuracy: 72.7%
+Validation accuracy: 69.5%
+@step 200
+Minibatch Loss: 1.565874
+Minibatch accuracy: 77.3%
+Validation accuracy: 72.7%
+@step 300
+Minibatch Loss: 1.700214
+Minibatch accuracy: 76.6%
+Validation accuracy: 74.3%
+@step 400
+Minibatch Loss: 2.021153
+Minibatch accuracy: 69.5%
+Validation accuracy: 74.7%
+@step 500
+Minibatch Loss: 1.544600
+Minibatch accuracy: 79.7%
+Validation accuracy: 75.3%
+@step 600
+Minibatch Loss: 1.747559
+Minibatch accuracy: 77.3%
+Validation accuracy: 75.4%
+@step 700
+Minibatch Loss: 1.755962
+Minibatch accuracy: 68.8%
+Validation accuracy: 75.2%
+@step 800
+Minibatch Loss: 1.089844
+Minibatch accuracy: 82.0%
+Validation accuracy: 75.4%
+@step 900
+Minibatch Loss: 1.094786
+Minibatch accuracy: 78.9%
+Validation accuracy: 76.0%
+@step 1000
+Minibatch Loss: 1.264101
+Minibatch accuracy: 76.6%
+Validation accuracy: 76.5%
+@step 1100
+Minibatch Loss: 0.940743
+Minibatch accuracy: 80.5%
+Validation accuracy: 77.1%
+@step 1200
+Minibatch Loss: 1.758427
+Minibatch accuracy: 77.3%
+Validation accuracy: 76.9%
+@step 1300
+Minibatch Loss: 1.822857
+Minibatch accuracy: 68.8%
+Validation accuracy: 76.6%
+@step 1400
+Minibatch Loss: 1.015659
+Minibatch accuracy: 81.2%
+Validation accuracy: 76.8%
+@step 1500
+Minibatch Loss: 1.070455
+Minibatch accuracy: 82.8%
+Validation accuracy: 76.9%
+@step 1600
+Minibatch Loss: 1.212733
+Minibatch accuracy: 78.1%
+Validation accuracy: 76.5%
+@step 1700
+Minibatch Loss: 0.796694
+Minibatch accuracy: 82.8%
+Validation accuracy: 77.5%
+@step 1800
+Minibatch Loss: 0.838152
+Minibatch accuracy: 82.0%
+Validation accuracy: 77.3%
+@step 1900
+Minibatch Loss: 0.816878
+Minibatch accuracy: 80.5%
+Validation accuracy: 77.0%
+@step 2000
+Minibatch Loss: 1.338024
+Minibatch accuracy: 76.6%
+Validation accuracy: 77.6%
+@step 2050
+Minibatch Loss: 1.343480
+Minibatch accuracy: 74.2%
+Validation accuracy: 77.1%
+@Done
+Test accuracy: 85.3%
+Training completed (elapsed time = 3.5162806510925293 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent (num_steps=10000)...
+@Initialized...
+@step 0
+Minibatch Loss: 19.389563
+Minibatch accuracy: 7.8%
+Validation accuracy: 10.2%
+@step 500
+Minibatch Loss: 2.073940
+Minibatch accuracy: 73.4%
+Validation accuracy: 75.4%
+@step 1000
+Minibatch Loss: 1.330091
+Minibatch accuracy: 80.5%
+Validation accuracy: 76.0%
+@step 1500
+Minibatch Loss: 1.024223
+Minibatch accuracy: 82.8%
+Validation accuracy: 76.8%
+@step 2000
+Minibatch Loss: 1.065653
+Minibatch accuracy: 78.9%
+Validation accuracy: 77.9%
+@step 2500
+Minibatch Loss: 0.832551
+Minibatch accuracy: 75.8%
+Validation accuracy: 77.6%
+@step 3000
+Minibatch Loss: 0.906253
+Minibatch accuracy: 78.9%
+Validation accuracy: 78.4%
+@step 3500
+Minibatch Loss: 1.115503
+Minibatch accuracy: 71.1%
+Validation accuracy: 78.6%
+@step 4000
+Minibatch Loss: 0.865854
+Minibatch accuracy: 78.9%
+Validation accuracy: 79.0%
+@step 4500
+Minibatch Loss: 0.873564
+Minibatch accuracy: 78.9%
+Validation accuracy: 79.2%
+@step 5000
+Minibatch Loss: 1.031677
+Minibatch accuracy: 75.8%
+Validation accuracy: 79.6%
+@step 5500
+Minibatch Loss: 0.786084
+Minibatch accuracy: 80.5%
+Validation accuracy: 79.6%
+@step 6000
+Minibatch Loss: 0.521406
+Minibatch accuracy: 85.2%
+Validation accuracy: 80.2%
+@step 6500
+Minibatch Loss: 0.547902
+Minibatch accuracy: 81.2%
+Validation accuracy: 80.0%
+@step 7000
+Minibatch Loss: 0.477652
+Minibatch accuracy: 89.1%
+Validation accuracy: 80.0%
+@step 7500
+Minibatch Loss: 0.906062
+Minibatch accuracy: 84.4%
+Validation accuracy: 80.1%
+@step 8000
+Minibatch Loss: 0.728599
+Minibatch accuracy: 80.5%
+Validation accuracy: 80.4%
+@step 8500
+Minibatch Loss: 0.777278
+Minibatch accuracy: 82.0%
+Validation accuracy: 80.8%
+@step 9000
+Minibatch Loss: 1.091567
+Minibatch accuracy: 71.1%
+Validation accuracy: 80.7%
+@step 9500
+Minibatch Loss: 0.602535
+Minibatch accuracy: 81.2%
+Validation accuracy: 79.3%
+@step 10000
+Minibatch Loss: 0.559747
+Minibatch accuracy: 83.6%
+Validation accuracy: 80.5%
+@Done
+Test accuracy: 88.1%
+Training completed (elapsed time = 13.436700582504272 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent (num_steps=100000)...
+@Initialized...
+@step 0
+Minibatch Loss: 21.305340
+Minibatch accuracy: 5.5%
+Validation accuracy: 11.5%
+@step 5000
+Minibatch Loss: 1.000507
+Minibatch accuracy: 77.3%
+Validation accuracy: 79.6%
+@step 10000
+Minibatch Loss: 0.602646
+Minibatch accuracy: 85.2%
+Validation accuracy: 80.5%
+@step 15000
+Minibatch Loss: 0.664734
+Minibatch accuracy: 82.8%
+Validation accuracy: 81.3%
+@step 20000
+Minibatch Loss: 0.836212
+Minibatch accuracy: 80.5%
+Validation accuracy: 81.5%
+@step 25000
+Minibatch Loss: 0.679944
+Minibatch accuracy: 80.5%
+Validation accuracy: 80.8%
+@step 30000
+Minibatch Loss: 0.830087
+Minibatch accuracy: 77.3%
+Validation accuracy: 80.8%
+@step 35000
+Minibatch Loss: 0.588108
+Minibatch accuracy: 82.8%
+Validation accuracy: 81.2%
+@step 40000
+Minibatch Loss: 0.717298
+Minibatch accuracy: 76.6%
+Validation accuracy: 81.6%
+@step 45000
+Minibatch Loss: 0.562306
+Minibatch accuracy: 85.9%
+Validation accuracy: 81.6%
+@step 50000
+Minibatch Loss: 0.508330
+Minibatch accuracy: 85.9%
+Validation accuracy: 82.0%
+@step 55000
+Minibatch Loss: 0.504659
+Minibatch accuracy: 85.2%
+Validation accuracy: 81.6%
+@step 60000
+Minibatch Loss: 0.519825
+Minibatch accuracy: 84.4%
+Validation accuracy: 81.5%
+@step 65000
+Minibatch Loss: 0.733511
+Minibatch accuracy: 78.9%
+Validation accuracy: 81.0%
+@step 70000
+Minibatch Loss: 0.936156
+Minibatch accuracy: 78.9%
+Validation accuracy: 81.7%
+@step 75000
+Minibatch Loss: 0.581324
+Minibatch accuracy: 81.2%
+Validation accuracy: 81.7%
+@step 80000
+Minibatch Loss: 0.549222
+Minibatch accuracy: 85.2%
+Validation accuracy: 81.9%
+@step 85000
+Minibatch Loss: 0.472167
+Minibatch accuracy: 83.6%
+Validation accuracy: 81.5%
+@step 90000
+Minibatch Loss: 0.799876
+Minibatch accuracy: 76.6%
+Validation accuracy: 82.0%
+@step 95000
+Minibatch Loss: 0.528800
+Minibatch accuracy: 85.2%
+Validation accuracy: 81.4%
+@step 100000
+Minibatch Loss: 0.789450
+Minibatch accuracy: 79.7%
+Validation accuracy: 82.0%
+@Done
+Test accuracy: 89.2%
+Training completed (elapsed time = 130.0234031677246 seconds).
