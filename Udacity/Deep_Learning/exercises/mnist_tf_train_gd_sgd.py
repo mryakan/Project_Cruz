@@ -247,7 +247,8 @@ def tf_gd_build_graph(train_dataset, train_labels, valid_dataset, test_dataset, 
 
         # Optimizer.
         #   We are going to find the minimum of this loss using gradient descent.
-        optimizer = tf.train.GradientDescentOptimizer(0.5).minimize(loss)
+        learn_rate = 0.5
+        optimizer = tf.train.GradientDescentOptimizer(learn_rate).minimize(loss)
 
         # Predictions for the training, validation, and test data.
         #   These are not part of training, but merely here so that we can report accuracy figures as we train.
@@ -273,8 +274,7 @@ def tf_gd_train(graph, num_steps, helpers, train_labels, valid_labels, test_labe
         print('@Initialized...')
         for step in range(num_steps+1):
             # Run the computations. We tell .run() that we want to run the optimizer,
-            # and get the loss value and the training predictions returned as numpy
-            # arrays.
+            # and get the loss value and the training predictions returned as numpy arrays.
             _, l, predictions = session.run([optimizer, loss, train_prediction])
             if step == num_steps or step % 100 == 0:
                 print("@step", step)
