@@ -38,7 +38,9 @@ to solve assignment stated here:
 """
 import os
 import sys
+import time
 from mnist_common import prompt_topdir, load_datasets_separate
+from mnist_tf_train_gd_sgd import tf_gd_build_graph, tf_gd_train
 
 # Globals
 num_labels = 10      # 'A' through 'J'
@@ -65,13 +67,30 @@ def main():
         return False
 
     #print('label', train_labels[1], ':\n', train_dataset[1])
-    san_file = reg_file.replace('.pickle', '_sanitized.pickle')
-    success, train_dataset_s, train_labels_s, valid_dataset_s, valid_labels_s, test_dataset_s, test_labels_s = \
-        load_datasets_separate(san_file, reshape=True, num_labels=num_labels, image_size=image_size,
-                               verbose=True, description='Sanitized')
-    if not success:
-        print("...Skipping it!")  # continue anyway
+    # san_file = reg_file.replace('.pickle', '_sanitized.pickle')
+    # success, train_dataset_s, train_labels_s, valid_dataset_s, valid_labels_s, test_dataset_s, test_labels_s = \
+    #     load_datasets_separate(san_file, reshape=True, num_labels=num_labels, image_size=image_size,
+    #                            verbose=True, description='Sanitized')
+    # if not success:
+    #     print("...Skipping it!")  # continue anyway
     #print('label', train_labels_s[1], ':\n', train_dataset_s[1])
+
+    # With gradient descent training, even this much data is prohibitive.
+    # Trauncate the training data for faster turnaround.
+    train_subset = 20000
+    train_dataset_t = train_dataset[:train_subset, :]
+    train_labels_t = train_labels[:train_subset]
+    print("Building Gradient Descent Graph using %s training labels" % train_subset)
+    graph, helpers = tf_gd_build_graph(train_dataset_t, train_labels_t, valid_dataset, test_dataset,
+                                       num_labels, image_size)
+    num_steps = 2050 #800
+    train_labels_t = train_labels[:train_subset, :]
+    print("Starting training using Gradient Descent (num_steps=%s)..."  % num_steps)
+    start = time.time()
+    tf_gd_train(graph, num_steps, helpers, train_labels_t, valid_labels, test_labels)
+    end = time.time()
+    print("Training completed (elapsed time = %s seconds)." % (end-start))
+
     return True
 
 if __name__ == '__main__':
