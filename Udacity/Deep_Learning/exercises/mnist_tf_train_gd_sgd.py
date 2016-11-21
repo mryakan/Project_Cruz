@@ -264,7 +264,7 @@ def calc_accuracy(predictions, labels):
     return acc
 
 def tf_gd_train(graph, num_steps, helpers, train_labels, valid_labels, test_labels):
-    """ run this computation and iterate 'num_steps' times"""
+    """ run the computation and iterate 'num_steps' times"""
     optimizer, loss, train_prediction, valid_prediction, test_prediction = helpers
     with tf.Session(graph=graph) as session:
         # This is a one-time operation which ensures the parameters get initialized as
@@ -280,6 +280,66 @@ def tf_gd_train(graph, num_steps, helpers, train_labels, valid_labels, test_labe
                 print("@step", step)
                 print('Loss: %f' % l)
                 print('Training accuracy: %.1f%%' % calc_accuracy(predictions, train_labels))
+                # Calling .eval() on valid_prediction is basically like calling run(), but
+                # just to get that one numpy array. Note that it recomputes all its graph dependencies.
+                print('Validation accuracy: %.1f%%' % calc_accuracy(valid_prediction.eval(), valid_labels))
+        print("@Done")
+        print('Test accuracy: %.1f%%' % calc_accuracy(test_prediction.eval(), test_labels))
+
+
+def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, image_size):
+    """load all the data into TensorFlow and build the computation graph for stochastic gradient descent training"""
+    graph = tf.Graph()
+    with graph.as_default():
+        # Input data.
+        #   For the training data, we use a placeholder that will be fed at run time with a training minibatch.
+        tf_train_dataset = tf.placeholder(tf.float32, shape=(batch_size, image_size * image_size))
+        tf_train_labels = tf.placeholder(tf.float32, shape=(batch_size, num_labels))
+        tf_valid_dataset = tf.constant(valid_dataset)
+        tf_test_dataset = tf.constant(test_dataset)
+
+        # Variables.
+        weights = tf.Variable(tf.truncated_normal([image_size * image_size, num_labels]))
+        biases = tf.Variable(tf.zeros([num_labels]))
+
+        # Training computation.
+        logits = tf.matmul(tf_train_dataset, weights) + biases
+        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits, tf_train_labels))
+
+        # Optimizer.
+        learn_rate = 0.5
+        optimizer = tf.train.GradientDescentOptimizer(learn_rate).minimize(loss)
+
+        # Predictions for the training, validation, and test data.
+        train_prediction = tf.nn.softmax(logits)
+        valid_prediction = tf.nn.softmax(tf.matmul(tf_valid_dataset, weights) + biases)
+        test_prediction = tf.nn.softmax(tf.matmul(tf_test_dataset, weights) + biases)
+    helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction, tf_train_dataset, tf_train_labels)
+    return graph, helpers
+
+def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels):
+    """ run the computation and iterate 'num_steps' times"""
+    optimizer, loss, train_prediction, valid_prediction, test_prediction, tf_train_dataset, tf_train_labels = helpers
+    with tf.Session(graph=graph) as session:
+        init_op = tf.initialize_all_variables()
+        session.run(init_op) # pylint: disable=E1101
+        print('@Initialized...')
+        for step in range(num_steps+1):
+            # Pick an offset within the training data, which has been randomized.
+            # Note: we could use better randomization across epochs.
+            offset = (step * batch_size) % (train_labels.shape[0] - batch_size)
+            # Generate a minibatch.
+            batch_data = train_dataset[offset:(offset + batch_size), :]
+            batch_labels = train_labels[offset:(offset + batch_size), :]
+            # Prepare a dictionary telling the session where to feed the minibatch.
+            # The key of the dictionary is the placeholder node of the graph to be fed,
+            # and the value is the numpy array to feed to it.
+            feed_dict = {tf_train_dataset: batch_data, tf_train_labels: batch_labels}
+            _, l, predictions = session.run([optimizer, loss, train_prediction], feed_dict=feed_dict)
+            if step == num_steps or step % 500 == 0:
+                print("@step", step)
+                print('Minibatch Loss: %f' % l)
+                print('Minibatch accuracy: %.1f%%' % calc_accuracy(predictions, batch_labels))
                 # Calling .eval() on valid_prediction is basically like calling run(), but
                 # just to get that one numpy array. Note that it recomputes all its graph dependencies.
                 print('Validation accuracy: %.1f%%' % calc_accuracy(valid_prediction.eval(), valid_labels))

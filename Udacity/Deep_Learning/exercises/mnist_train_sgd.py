@@ -40,12 +40,43 @@ import os
 import sys
 import time
 from mnist_common import prompt_topdir, load_datasets_separate
-from mnist_tf_train_gd_sgd import tf_gd_build_graph, tf_gd_train
+from mnist_tf_train_gd_sgd import tf_gd_build_graph, tf_gd_train, tf_sgd_build_graph, tf_sgd_train
 
 # Globals
 num_labels = 10      # 'A' through 'J'
 image_size = 28      # Pixel width and height.
 pixel_depth = 255.0  # Number of levels per pixel.
+
+def run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels):
+    """Run Gradient Descent training"""
+
+    # With gradient descent training, even this much data is prohibitive.
+    # Trauncate the training data for faster turnaround.
+    train_subset = 20000
+    train_dataset_t = train_dataset[:train_subset, :]
+    train_labels_t = train_labels[:train_subset]
+    print("Building Gradient Descent Graph using %s training labels" % train_subset)
+    graph, helpers = tf_gd_build_graph(train_dataset_t, train_labels_t, valid_dataset, test_dataset,
+                                       num_labels, image_size)
+    num_steps = 2050 #800
+    train_labels_t = train_labels[:train_subset, :]
+    print("Starting training using Gradient Descent (num_steps=%s)..."  % num_steps)
+    start = time.time()
+    tf_gd_train(graph, num_steps, helpers, train_labels_t, valid_labels, test_labels)
+    end = time.time()
+    print("Training completed (elapsed time = %s seconds)." % (end-start))
+
+def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels):
+    """Run Stochastic Gradient Descent training"""
+    batch_size = 128
+    print("Building Stochastic Gradient Descent Graph using batch size =", batch_size)
+    graph, helpers = tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, image_size)
+    num_steps = 10000 # 3000
+    print("Starting training using Stochastic Gradient Descent (num_steps=%s)..." % num_steps)
+    start = time.time()
+    tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels)
+    end = time.time()
+    print("Training completed (elapsed time = %s seconds)." % (end - start))
 
 def main():
     """main fn"""
@@ -66,6 +97,11 @@ def main():
         print("...Aborting.")
         return False
 
+    # 1st run gradient descent
+    #run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    # switch to stochastic gradient descent training instead, which is much faster
+    run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+
     #print('label', train_labels[1], ':\n', train_dataset[1])
     # san_file = reg_file.replace('.pickle', '_sanitized.pickle')
     # success, train_dataset_s, train_labels_s, valid_dataset_s, valid_labels_s, test_dataset_s, test_labels_s = \
@@ -74,23 +110,6 @@ def main():
     # if not success:
     #     print("...Skipping it!")  # continue anyway
     #print('label', train_labels_s[1], ':\n', train_dataset_s[1])
-
-    # With gradient descent training, even this much data is prohibitive.
-    # Trauncate the training data for faster turnaround.
-    train_subset = 20000
-    train_dataset_t = train_dataset[:train_subset, :]
-    train_labels_t = train_labels[:train_subset]
-    print("Building Gradient Descent Graph using %s training labels" % train_subset)
-    graph, helpers = tf_gd_build_graph(train_dataset_t, train_labels_t, valid_dataset, test_dataset,
-                                       num_labels, image_size)
-    num_steps = 2050 #800
-    train_labels_t = train_labels[:train_subset, :]
-    print("Starting training using Gradient Descent (num_steps=%s)..."  % num_steps)
-    start = time.time()
-    tf_gd_train(graph, num_steps, helpers, train_labels_t, valid_labels, test_labels)
-    end = time.time()
-    print("Training completed (elapsed time = %s seconds)." % (end-start))
-
     return True
 
 if __name__ == '__main__':
