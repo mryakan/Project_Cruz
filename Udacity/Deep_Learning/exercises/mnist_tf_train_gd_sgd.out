@@ -631,3 +631,209 @@ Validation accuracy: 82.0%
 @Done
 Test accuracy: 89.2%
 Training completed (elapsed time = 130.0234031677246 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent (num_steps=10000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 411.353577
+Minibatch accuracy: 8.6%
+Validation accuracy: 42.5%
+@step 500
+Minibatch Loss: 12.213131
+Minibatch accuracy: 81.2%
+Validation accuracy: 80.3%
+@step 1000
+Minibatch Loss: 8.509855
+Minibatch accuracy: 87.5%
+Validation accuracy: 80.5%
+@step 1500
+Minibatch Loss: 9.946336
+Minibatch accuracy: 84.4%
+Validation accuracy: 79.2%
+@step 2000
+Minibatch Loss: 9.851585
+Minibatch accuracy: 82.0%
+Validation accuracy: 81.7%
+@step 2500
+Minibatch Loss: 2.694541
+Minibatch accuracy: 87.5%
+Validation accuracy: 82.8%
+@step 3000
+Minibatch Loss: 4.443260
+Minibatch accuracy: 80.5%
+Validation accuracy: 81.8%
+@step 3500
+Minibatch Loss: 3.160938
+Minibatch accuracy: 81.2%
+Validation accuracy: 80.9%
+@step 4000
+Minibatch Loss: 3.128185
+Minibatch accuracy: 83.6%
+Validation accuracy: 82.4%
+@step 4500
+Minibatch Loss: 1.411107
+Minibatch accuracy: 81.2%
+Validation accuracy: 82.4%
+@step 5000
+Minibatch Loss: 3.314402
+Minibatch accuracy: 85.2%
+Validation accuracy: 80.7%
+@step 5500
+Minibatch Loss: 2.629336
+Minibatch accuracy: 87.5%
+Validation accuracy: 82.0%
+@step 6000
+Minibatch Loss: 0.530420
+Minibatch accuracy: 86.7%
+Validation accuracy: 83.2%
+@step 6500
+Minibatch Loss: 1.541503
+Minibatch accuracy: 91.4%
+Validation accuracy: 83.2%
+@step 7000
+Minibatch Loss: 0.531750
+Minibatch accuracy: 92.2%
+Validation accuracy: 83.5%
+@step 7500
+Minibatch Loss: 1.266923
+Minibatch accuracy: 85.2%
+Validation accuracy: 83.1%
+@step 8000
+Minibatch Loss: 1.049487
+Minibatch accuracy: 86.7%
+Validation accuracy: 83.8%
+@step 8500
+Minibatch Loss: 2.025866
+Minibatch accuracy: 82.8%
+Validation accuracy: 83.2%
+@step 9000
+Minibatch Loss: 1.042600
+Minibatch accuracy: 84.4%
+Validation accuracy: 84.3%
+@step 9500
+Minibatch Loss: 0.795953
+Minibatch accuracy: 88.3%
+Validation accuracy: 83.4%
+@step 10000
+Minibatch Loss: 0.505154
+Minibatch accuracy: 92.2%
+Validation accuracy: 83.6%
+@Done
+Test accuracy: 90.5%
+Training completed (elapsed time = 158.2773425579071 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent (num_steps=100000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 353.937103
+Minibatch accuracy: 14.1%
+Validation accuracy: 32.8%
+@step 5000
+Minibatch Loss: 1.800084
+Minibatch accuracy: 82.0%
+Validation accuracy: 80.2%
+@step 10000
+Minibatch Loss: 0.312310
+Minibatch accuracy: 92.2%
+Validation accuracy: 83.3%
+@step 15000
+Minibatch Loss: 0.449082
+Minibatch accuracy: 89.8%
+Validation accuracy: 84.8%
+@step 20000
+Minibatch Loss: 0.258868
+Minibatch accuracy: 92.2%
+Validation accuracy: 85.5%
+@step 25000
+Minibatch Loss: 0.094406
+Minibatch accuracy: 97.7%
+Validation accuracy: 85.7%
+@step 30000
+Minibatch Loss: 1.004619
+Minibatch accuracy: 93.0%
+Validation accuracy: 86.1%
+@step 35000
+Minibatch Loss: 0.075064
+Minibatch accuracy: 96.1%
+Validation accuracy: 85.8%
+@step 40000
+Minibatch Loss: 0.095134
+Minibatch accuracy: 96.9%
+Validation accuracy: 86.7%
+@step 45000
+Minibatch Loss: 0.089477
+Minibatch accuracy: 96.1%
+Validation accuracy: 87.0%
+@step 50000
+Minibatch Loss: 0.027744
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.0%
+@step 55000
+Minibatch Loss: 0.029260
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.0%
+@step 60000
+Minibatch Loss: 0.088396
+Minibatch accuracy: 96.1%
+Validation accuracy: 86.8%
+@step 65000
+Minibatch Loss: 0.127134
+Minibatch accuracy: 97.7%
+Validation accuracy: 86.0%
+@step 70000
+Minibatch Loss: 0.010122
+Minibatch accuracy: 100.0%
+Validation accuracy: 87.1%
+@step 75000
+Minibatch Loss: 0.432376
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.2%
+@step 80000
+Minibatch Loss: 0.089365
+Minibatch accuracy: 97.7%
+Validation accuracy: 87.0%
+@step 85000
+Minibatch Loss: 0.047444
+Minibatch accuracy: 98.4%
+Validation accuracy: 87.0%
+@step 90000
+Minibatch Loss: 0.035342
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.2%
+@step 95000
+Minibatch Loss: 0.011131
+Minibatch accuracy: 100.0%
+Validation accuracy: 87.4%
+@step 100000
+Minibatch Loss: 0.003059
+Minibatch accuracy: 100.0%
+Validation accuracy: 87.3%
+@Done
+Test accuracy: 93.2%
+Training completed (elapsed time = 1534.7193789482117 seconds).

@@ -40,7 +40,8 @@ import os
 import sys
 import time
 from mnist_common import prompt_topdir, load_datasets_separate
-from mnist_tf_train_gd_sgd import tf_gd_build_graph, tf_gd_train, tf_sgd_build_graph, tf_sgd_train
+from mnist_tf_train_gd_sgd import tf_gd_build_graph, tf_gd_train, tf_sgd_build_graph, tf_sgd_train, \
+    tf_sgd_build_graph_relu
 
 # Globals
 num_labels = 10      # 'A' through 'J'
@@ -78,6 +79,20 @@ def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_datas
     end = time.time()
     print("Training completed (elapsed time = %s seconds)." % (end - start))
 
+def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels):
+    """Run Stochastic Gradient Descent training"""
+    batch_size = 128
+    num_nodes = 1024 # no of nodes in hidden layer
+    print("Building Stochastic Gradient Descent Graph using batch size = %s and a %s node RELU hidden layer" %
+          (batch_size, num_nodes))
+    graph, helpers = tf_sgd_build_graph_relu(batch_size, num_nodes, valid_dataset, test_dataset, num_labels, image_size)
+    num_steps = 10000 # 3000
+    print("Starting training using Stochastic Gradient Descent (num_steps=%s) ..." % num_steps)
+    start = time.time()
+    tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels)
+    end = time.time()
+    print("Training completed (elapsed time = %s seconds)." % (end - start))
+
 def main():
     """main fn"""
     # Prompt for top directory where mnist folders are located
@@ -98,9 +113,11 @@ def main():
         return False
 
     # 1st run gradient descent
-    #run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # switch to stochastic gradient descent training instead, which is much faster
     run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    # Now stochastic gradient descent training with RELU hidden layer, which should be more accurate
+    run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
 
     #print('label', train_labels[1], ':\n', train_dataset[1])
     # san_file = reg_file.replace('.pickle', '_sanitized.pickle')

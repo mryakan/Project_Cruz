@@ -286,7 +286,6 @@ def tf_gd_train(graph, num_steps, helpers, train_labels, valid_labels, test_labe
         print("@Done")
         print('Test accuracy: %.1f%%' % calc_accuracy(test_prediction.eval(), test_labels))
 
-
 def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, image_size):
     """load all the data into TensorFlow and build the computation graph for stochastic gradient descent training"""
     graph = tf.Graph()
@@ -314,6 +313,53 @@ def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, imag
         train_prediction = tf.nn.softmax(logits)
         valid_prediction = tf.nn.softmax(tf.matmul(tf_valid_dataset, weights) + biases)
         test_prediction = tf.nn.softmax(tf.matmul(tf_test_dataset, weights) + biases)
+    helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction, tf_train_dataset, tf_train_labels)
+    return graph, helpers
+
+def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_dataset, num_labels, image_size):  # pylint: disable=R0914
+    """
+    load all the data into TensorFlow and build the computation graph for stochastic gradient descent training
+    Add a hidden RELU layer with 'num_hidden_nodes'
+    """
+    graph = tf.Graph()
+    with graph.as_default():
+        # Input data.
+        #   For the training data, we use a placeholder that will be fed at run time with a training minibatch.
+        tf_train_dataset = tf.placeholder(tf.float32, shape=(batch_size, image_size * image_size))
+        tf_train_labels = tf.placeholder(tf.float32, shape=(batch_size, num_labels))
+        tf_valid_dataset = tf.constant(valid_dataset)
+        tf_test_dataset = tf.constant(test_dataset)
+
+        # Variables.
+        # 1st (hidden) layer is (image_size x image_size) -> num_hidden_nodes
+        weights_a = tf.Variable(tf.truncated_normal([image_size * image_size, num_hidden_nodes]))
+        biases_a = tf.Variable(tf.zeros([num_hidden_nodes]))
+        # 2nd layer is num_hidden_nodes -> num_labels
+        weights_b = tf.Variable(tf.truncated_normal([num_hidden_nodes, num_labels]))
+        biases_b = tf.Variable(tf.zeros([num_labels]))
+
+        # Training computation for RELU hidden layer
+        logits_a = tf.matmul(tf_train_dataset, weights_a) + biases_a
+        relu_hidden_layer = tf.nn.relu(logits_a)
+        # Next layer
+        logits_b = tf.matmul(relu_hidden_layer, weights_b) + biases_b
+        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits_b, tf_train_labels))
+
+        # Optimizer.
+        learn_rate = 0.5
+        optimizer = tf.train.GradientDescentOptimizer(learn_rate).minimize(loss)
+
+        # Predictions for the training, validation, and test data.
+        train_prediction = tf.nn.softmax(logits_b)
+
+        logits_v = tf.matmul(tf_valid_dataset, weights_a) + biases_a
+        relu_v = tf.nn.relu(logits_v)
+        valid_prediction = tf.nn.softmax(tf.matmul(relu_v, weights_b) + biases_b)
+
+        logits_t = tf.matmul(tf_test_dataset, weights_a) + biases_a
+        relu_t = tf.nn.relu(logits_t)
+        test_prediction = tf.nn.softmax(tf.matmul(relu_t, weights_b) + biases_b)
+
     helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction, tf_train_dataset, tf_train_labels)
     return graph, helpers
 
@@ -345,3 +391,18 @@ def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_lab
                 print('Validation accuracy: %.1f%%' % calc_accuracy(valid_prediction.eval(), valid_labels))
         print("@Done")
         print('Test accuracy: %.1f%%' % calc_accuracy(test_prediction.eval(), test_labels))
+
+def weight_variable(shape):
+    """
+    Initialize weights with a small amount of noise for symmetry breaking, and to prevent 0 gradients.
+    For using ReLU neurons, it is also good practice to initialize them with a slightly positive initial
+    bias to avoid "dead neurons.
+    See: 'https://www.tensorflow.org/versions/r0.7/tutorials/mnist/pros/index.html#weight-initialization'
+    """
+    initial = tf.truncated_normal(shape, stddev=0.1)
+    return tf.Variable(initial)
+
+def bias_variable(shape):
+    """Also initialize Bias in same manner    """
+    initial = tf.constant(0.1, shape=shape)
+    return tf.Variable(initial)
