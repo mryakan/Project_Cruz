@@ -39,6 +39,8 @@ to solve assignment stated here:
 import os
 import sys
 import time
+import matplotlib.pyplot as plt
+import numpy as np
 from mnist_common import prompt_topdir, load_datasets_separate
 from mnist_tf_train_gd_sgd import tf_gd_build_graph, tf_gd_train, tf_sgd_build_graph, tf_sgd_train, \
     tf_sgd_build_graph_relu
@@ -49,7 +51,7 @@ image_size = 28      # Pixel width and height.
 pixel_depth = 255.0  # Number of levels per pixel.
 
 def run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels):
-    """Run Gradient Descent training"""
+    """Run Gradient Descent training and optionally apply L2 regularization"""
 
     # With gradient descent training, even this much data is prohibitive.
     # Trauncate the training data for faster turnaround.
@@ -67,31 +69,69 @@ def run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_datase
     end = time.time()
     print("Training completed (elapsed time = %s seconds)." % (end-start))
 
-def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels):
+def display_acc_vs_reg_results(acc_list, reg_list):
+    """Plot Accuracy vs regularization"""
+    print("L2 regularization 'beta': Test accuracy")
+    print("=======================================")
+    for (reg, acc) in list(zip(reg_list, acc_list)):
+        print("%6f: %.1f%%" % (reg, acc))
+    print('')
+    plt.semilogx(reg_list, acc_list)
+    plt.grid(True)
+    plt.title("Test accuracy vs L2 regularization 'beta'")
+    plt.show()
+
+def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+            apply_regularization=False):
     """Run Stochastic Gradient Descent training"""
     batch_size = 128
     print("Building Stochastic Gradient Descent Graph using batch size =", batch_size)
     graph, helpers = tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, image_size)
-    num_steps = 10000 # 3000
-    print("Starting training using Stochastic Gradient Descent (num_steps=%s)..." % num_steps)
-    start = time.time()
-    tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels)
-    end = time.time()
-    print("Training completed (elapsed time = %s seconds)." % (end - start))
+    num_steps = 3000 # 10000 if not apply_regularization else 3000
+    reg_list = [pow(10, i) for i in np.arange(-4, -2, 0.1)]
+    l2_reg_beta_l = reg_list if apply_regularization else [0.]
+    acc_list = []
+    verbose = True if not apply_regularization else False
+    for l2_reg_beta in l2_reg_beta_l:
+        print("Starting training using Stochastic Gradient Descent %s (num_steps=%s)..." %
+              ('with L2 regularization beta=%f' % l2_reg_beta if apply_regularization else 'without regularization',
+               num_steps))
+        start = time.time()
+        accuracy = tf_sgd_train(graph, num_steps, batch_size, helpers,
+                                train_dataset, train_labels, valid_labels, test_labels,
+                                l2_reg_beta=l2_reg_beta, verbose=verbose)
+        end = time.time()
+        print("Training completed (elapsed time = %s seconds)." % (end - start))
+        acc_list.append(accuracy)
+    if apply_regularization:
+        display_acc_vs_reg_results(acc_list, reg_list)
 
-def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels):
+def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+                 apply_regularization=False):
     """Run Stochastic Gradient Descent training"""
     batch_size = 128
     num_nodes = 1024 # no of nodes in hidden layer
     print("Building Stochastic Gradient Descent Graph using batch size = %s and a %s node RELU hidden layer" %
           (batch_size, num_nodes))
     graph, helpers = tf_sgd_build_graph_relu(batch_size, num_nodes, valid_dataset, test_dataset, num_labels, image_size)
-    num_steps = 10000 # 3000
-    print("Starting training using Stochastic Gradient Descent (num_steps=%s) ..." % num_steps)
-    start = time.time()
-    tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels)
-    end = time.time()
-    print("Training completed (elapsed time = %s seconds)." % (end - start))
+    num_steps = 3000 #10000 if not apply_regularization else 3000
+    reg_list = [pow(10, i) for i in np.arange(-4, -2, 0.1)]
+    l2_reg_beta_l = reg_list if apply_regularization else [0.]
+    acc_list = []
+    verbose = True if not apply_regularization else False
+    for l2_reg_beta in l2_reg_beta_l:
+        print("Starting training using Stochastic Gradient Descent %s (num_steps=%s) ..." %
+              ('with L2 regularization beta=%f' % l2_reg_beta if apply_regularization else 'without regularization',
+               num_steps))
+        start = time.time()
+        accuracy = tf_sgd_train(graph, num_steps, batch_size, helpers,
+                                train_dataset, train_labels, valid_labels, test_labels,
+                                l2_reg_beta=l2_reg_beta, verbose=verbose)
+        end = time.time()
+        print("Training completed (elapsed time = %s seconds)." % (end - start))
+        acc_list.append(accuracy)
+    if apply_regularization:
+        display_acc_vs_reg_results(acc_list, reg_list)
 
 def main():
     """main fn"""
@@ -113,11 +153,17 @@ def main():
         return False
 
     # 1st run gradient descent
-    run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    #run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # switch to stochastic gradient descent training instead, which is much faster
-    run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    #run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    # Now run with regularization
+    #run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+    #        apply_regularization=True)
     # Now stochastic gradient descent training with RELU hidden layer, which should be more accurate
     run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    # Now run with regularization
+    run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+                 apply_regularization=True)
 
     #print('label', train_labels[1], ':\n', train_dataset[1])
     # san_file = reg_file.replace('.pickle', '_sanitized.pickle')

@@ -209,6 +209,7 @@
 # Modification history:
 # ====================
 # - <2016-Nov-20> by "Medhat R. Yakan": Adding docstrings + some refactoring
+# - <2016-Nov-25> by "Medhat R. Yakan": Add regularization support
 #
 
 """
@@ -217,7 +218,7 @@ Tensorflow utils for Gradient Descent and Stochastic Gradient Descent (SGD) used
 """
 
 import tensorflow as tf
-import numpy as np
+from mnist_common import calc_accuracy
 
 def tf_gd_build_graph(train_dataset, train_labels, valid_dataset, test_dataset, num_labels, image_size):
     """load all the data into TensorFlow and build the computation graph for gradient descent training"""
@@ -258,11 +259,6 @@ def tf_gd_build_graph(train_dataset, train_labels, valid_dataset, test_dataset, 
     helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction)
     return graph, helpers
 
-def calc_accuracy(predictions, labels):
-    """Calculate accuracy of predictions"""
-    acc = (100.0 * np.sum(np.argmax(predictions, 1) == np.argmax(labels, 1)) / predictions.shape[0])
-    return acc
-
 def tf_gd_train(graph, num_steps, helpers, train_labels, valid_labels, test_labels):
     """ run the computation and iterate 'num_steps' times"""
     optimizer, loss, train_prediction, valid_prediction, test_prediction = helpers
@@ -296,6 +292,7 @@ def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, imag
         tf_train_labels = tf.placeholder(tf.float32, shape=(batch_size, num_labels))
         tf_valid_dataset = tf.constant(valid_dataset)
         tf_test_dataset = tf.constant(test_dataset)
+        tf_l2_reg_beta = tf.placeholder(tf.float32)
 
         # Variables.
         weights = tf.Variable(tf.truncated_normal([image_size * image_size, num_labels]))
@@ -303,7 +300,9 @@ def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, imag
 
         # Training computation.
         logits = tf.matmul(tf_train_dataset, weights) + biases
-        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits, tf_train_labels))
+        l2_regularization_param = tf_l2_reg_beta * tf.nn.l2_loss(weights)
+        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits, tf_train_labels)) + \
+                              l2_regularization_param
 
         # Optimizer.
         learn_rate = 0.5
@@ -313,7 +312,8 @@ def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, imag
         train_prediction = tf.nn.softmax(logits)
         valid_prediction = tf.nn.softmax(tf.matmul(tf_valid_dataset, weights) + biases)
         test_prediction = tf.nn.softmax(tf.matmul(tf_test_dataset, weights) + biases)
-    helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction, tf_train_dataset, tf_train_labels)
+    helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction,
+               tf_train_dataset, tf_train_labels, tf_l2_reg_beta)
     return graph, helpers
 
 def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_dataset, num_labels, image_size):  # pylint: disable=R0914
@@ -329,6 +329,7 @@ def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_da
         tf_train_labels = tf.placeholder(tf.float32, shape=(batch_size, num_labels))
         tf_valid_dataset = tf.constant(valid_dataset)
         tf_test_dataset = tf.constant(test_dataset)
+        tf_l2_reg_beta = tf.placeholder(tf.float32)
 
         # Variables.
         # 1st (hidden) layer is (image_size x image_size) -> num_hidden_nodes
@@ -343,7 +344,9 @@ def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_da
         relu_hidden_layer = tf.nn.relu(logits_a)
         # Next layer
         logits_b = tf.matmul(relu_hidden_layer, weights_b) + biases_b
-        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits_b, tf_train_labels))
+        l2_regularization_param = tf_l2_reg_beta * (tf.nn.l2_loss(weights_a) + tf.nn.l2_loss(weights_b))
+        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits_b, tf_train_labels)) + \
+                              l2_regularization_param
 
         # Optimizer.
         learn_rate = 0.5
@@ -360,16 +363,24 @@ def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_da
         relu_t = tf.nn.relu(logits_t)
         test_prediction = tf.nn.softmax(tf.matmul(relu_t, weights_b) + biases_b)
 
-    helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction, tf_train_dataset, tf_train_labels)
+    helpers = (optimizer, loss, train_prediction, valid_prediction, test_prediction,
+               tf_train_dataset, tf_train_labels, tf_l2_reg_beta)
     return graph, helpers
 
-def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels):
-    """ run the computation and iterate 'num_steps' times"""
-    optimizer, loss, train_prediction, valid_prediction, test_prediction, tf_train_dataset, tf_train_labels = helpers
+def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels,  # pylint: disable=R0913, R0914
+                 l2_reg_beta=0, verbose=True):
+    """
+    Run the computation and iterate 'num_steps' times
+    Use optional L2 regularization if 'l2_reg_beta' is != 0
+    """
+    optimizer, loss, train_prediction, valid_prediction, test_prediction, \
+    tf_train_dataset, tf_train_labels, tf_l2_reg_beta = helpers
+    acc = 0
     with tf.Session(graph=graph) as session:
         init_op = tf.initialize_all_variables()
         session.run(init_op) # pylint: disable=E1101
-        print('@Initialized...')
+        if verbose:
+            print('@Initialized...')
         for step in range(num_steps+1):
             # Pick an offset within the training data, which has been randomized.
             # Note: we could use better randomization across epochs.
@@ -380,17 +391,21 @@ def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_lab
             # Prepare a dictionary telling the session where to feed the minibatch.
             # The key of the dictionary is the placeholder node of the graph to be fed,
             # and the value is the numpy array to feed to it.
-            feed_dict = {tf_train_dataset: batch_data, tf_train_labels: batch_labels}
+            feed_dict = {tf_train_dataset: batch_data, tf_train_labels: batch_labels, tf_l2_reg_beta: l2_reg_beta}
             _, l, predictions = session.run([optimizer, loss, train_prediction], feed_dict=feed_dict)
-            if step == num_steps or step % 500 == 0:
-                print("@step", step)
-                print('Minibatch Loss: %f' % l)
-                print('Minibatch accuracy: %.1f%%' % calc_accuracy(predictions, batch_labels))
-                # Calling .eval() on valid_prediction is basically like calling run(), but
-                # just to get that one numpy array. Note that it recomputes all its graph dependencies.
-                print('Validation accuracy: %.1f%%' % calc_accuracy(valid_prediction.eval(), valid_labels))
-        print("@Done")
-        print('Test accuracy: %.1f%%' % calc_accuracy(test_prediction.eval(), test_labels))
+            if verbose:
+                if step == num_steps or step % 500 == 0:
+                    print("@step", step)
+                    print('Minibatch Loss: %f' % l)
+                    print('Minibatch accuracy: %.1f%%' % calc_accuracy(predictions, batch_labels))
+                    # Calling .eval() on valid_prediction is basically like calling run(), but
+                    # just to get that one numpy array. Note that it recomputes all its graph dependencies.
+                    print('Validation accuracy: %.1f%%' % calc_accuracy(valid_prediction.eval(), valid_labels))
+        if verbose:
+            print("@Done")
+        acc = calc_accuracy(test_prediction.eval(), test_labels)
+        print('Test accuracy: %.1f%%' % acc)
+    return acc
 
 def weight_variable(shape):
     """

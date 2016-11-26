@@ -837,3 +837,265 @@ Validation accuracy: 87.3%
 @Done
 Test accuracy: 93.2%
 Training completed (elapsed time = 1534.7193789482117 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent without regularization (num_steps=3000)...
+@Initialized...
+@step 0
+Minibatch Loss: 14.780846
+Minibatch accuracy: 10.9%
+Validation accuracy: 15.0%
+@step 500
+Minibatch Loss: 1.454228
+Minibatch accuracy: 77.3%
+Validation accuracy: 75.1%
+@step 1000
+Minibatch Loss: 1.014768
+Minibatch accuracy: 79.7%
+Validation accuracy: 76.4%
+@step 1500
+Minibatch Loss: 0.711707
+Minibatch accuracy: 85.2%
+Validation accuracy: 77.0%
+@step 2000
+Minibatch Loss: 1.051854
+Minibatch accuracy: 78.1%
+Validation accuracy: 77.7%
+@step 2500
+Minibatch Loss: 0.967072
+Minibatch accuracy: 78.1%
+Validation accuracy: 77.6%
+@step 3000
+Minibatch Loss: 0.972310
+Minibatch accuracy: 77.3%
+Validation accuracy: 78.4%
+@Done
+Test accuracy: 86.0%
+Training completed (elapsed time = 4.517459869384766 seconds).
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000100 (num_steps=3000)...
+Test accuracy: 85.7%
+Training completed (elapsed time = 4.251054048538208 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000126 (num_steps=3000)...
+Test accuracy: 86.4%
+Training completed (elapsed time = 4.224914789199829 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000158 (num_steps=3000)...
+Test accuracy: 86.6%
+Training completed (elapsed time = 4.215205907821655 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000200 (num_steps=3000)...
+Test accuracy: 87.4%
+Training completed (elapsed time = 4.369712591171265 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000251 (num_steps=3000)...
+Test accuracy: 87.1%
+Training completed (elapsed time = 4.590500831604004 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000316 (num_steps=3000)...
+Test accuracy: 87.1%
+Training completed (elapsed time = 4.324332237243652 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000398 (num_steps=3000)...
+Test accuracy: 87.2%
+Training completed (elapsed time = 4.239349126815796 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000501 (num_steps=3000)...
+Test accuracy: 87.4%
+Training completed (elapsed time = 4.239513158798218 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000631 (num_steps=3000)...
+Test accuracy: 88.0%
+Training completed (elapsed time = 4.274852752685547 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000794 (num_steps=3000)...
+Test accuracy: 88.0%
+Training completed (elapsed time = 4.180574417114258 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=3000)...
+Test accuracy: 88.3%
+Training completed (elapsed time = 4.23556113243103 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001259 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.176293849945068 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001585 (num_steps=3000)...
+Test accuracy: 88.5%
+Training completed (elapsed time = 4.1795690059661865 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001995 (num_steps=3000)...
+Test accuracy: 88.4%
+Training completed (elapsed time = 4.177227258682251 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.002512 (num_steps=3000)...
+Test accuracy: 88.4%
+Training completed (elapsed time = 4.2684760093688965 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003162 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.171888113021851 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003981 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.173566102981567 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.005012 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.151498317718506 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.006310 (num_steps=3000)...
+Test accuracy: 88.1%
+Training completed (elapsed time = 4.174676895141602 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.007943 (num_steps=3000)...
+Test accuracy: 88.0%
+Training completed (elapsed time = 4.180438041687012 seconds).
+L2 regularization 'beta': Test accuracy
+=======================================
+0.000100: 85.7%
+0.000126: 86.4%
+0.000158: 86.6%
+0.000200: 87.4%
+0.000251: 87.1%
+0.000316: 87.1%
+0.000398: 87.2%
+0.000501: 87.4%
+0.000631: 88.0%
+0.000794: 88.0%
+0.001000: 88.3%
+0.001259: 88.2%
+0.001585: 88.5%
+0.001995: 88.4%
+0.002512: 88.4%
+0.003162: 88.2%
+0.003981: 88.2%
+0.005012: 88.2%
+0.006310: 88.1%
+0.007943: 88.0%
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization (num_steps=3000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 344.293182
+Minibatch accuracy: 14.1%
+Validation accuracy: 33.7%
+@step 500
+Minibatch Loss: 20.279419
+Minibatch accuracy: 82.8%
+Validation accuracy: 80.2%
+@step 1000
+Minibatch Loss: 6.795269
+Minibatch accuracy: 80.5%
+Validation accuracy: 81.1%
+@step 1500
+Minibatch Loss: 12.461012
+Minibatch accuracy: 85.2%
+Validation accuracy: 78.8%
+@step 2000
+Minibatch Loss: 12.505983
+Minibatch accuracy: 75.0%
+Validation accuracy: 80.7%
+@step 2500
+Minibatch Loss: 3.648273
+Minibatch accuracy: 79.7%
+Validation accuracy: 81.5%
+@step 3000
+Minibatch Loss: 2.955511
+Minibatch accuracy: 85.2%
+Validation accuracy: 82.0%
+@Done
+Test accuracy: 88.7%
+Training completed (elapsed time = 64.69713020324707 seconds).
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000100 (num_steps=3000) ...
+Test accuracy: 90.0%
+Training completed (elapsed time = 61.56313228607178 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000126 (num_steps=3000) ...
+Test accuracy: 89.8%
+Training completed (elapsed time = 62.08690786361694 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000158 (num_steps=3000) ...
+Test accuracy: 89.7%
+Training completed (elapsed time = 61.78307008743286 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000200 (num_steps=3000) ...
+Test accuracy: 89.7%
+Training completed (elapsed time = 62.12089824676514 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000251 (num_steps=3000) ...
+Test accuracy: 89.9%
+Training completed (elapsed time = 64.68034863471985 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000316 (num_steps=3000) ...
+Test accuracy: 90.1%
+Training completed (elapsed time = 65.37827682495117 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000398 (num_steps=3000) ...
+Test accuracy: 90.9%
+Training completed (elapsed time = 71.0701801776886 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000501 (num_steps=3000) ...
+Test accuracy: 91.7%
+Training completed (elapsed time = 65.52927541732788 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000631 (num_steps=3000) ...
+Test accuracy: 91.8%
+Training completed (elapsed time = 67.02271842956543 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000794 (num_steps=3000) ...
+Test accuracy: 92.8%
+Training completed (elapsed time = 63.83665609359741 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=3000) ...
+Test accuracy: 93.3%
+Training completed (elapsed time = 64.22742342948914 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001259 (num_steps=3000) ...
+Test accuracy: 93.2%
+Training completed (elapsed time = 63.58773756027222 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001585 (num_steps=3000) ...
+Test accuracy: 93.3%
+Training completed (elapsed time = 62.38886547088623 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001995 (num_steps=3000) ...
+Test accuracy: 93.1%
+Training completed (elapsed time = 64.63395953178406 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.002512 (num_steps=3000) ...
+Test accuracy: 92.8%
+Training completed (elapsed time = 62.749054193496704 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003162 (num_steps=3000) ...
+Test accuracy: 92.5%
+Training completed (elapsed time = 60.22646880149841 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003981 (num_steps=3000) ...
+Test accuracy: 92.2%
+Training completed (elapsed time = 60.29340648651123 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.005012 (num_steps=3000) ...
+Test accuracy: 91.7%
+Training completed (elapsed time = 62.30061650276184 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.006310 (num_steps=3000) ...
+Test accuracy: 91.3%
+Training completed (elapsed time = 62.996739864349365 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.007943 (num_steps=3000) ...
+Test accuracy: 90.8%
+Training completed (elapsed time = 61.9250864982605 seconds).
+L2 regularization 'beta': Test accuracy
+=======================================
+0.000100: 90.0%
+0.000126: 89.8%
+0.000158: 89.7%
+0.000200: 89.7%
+0.000251: 89.9%
+0.000316: 90.1%
+0.000398: 90.9%
+0.000501: 91.7%
+0.000631: 91.8%
+0.000794: 92.8%
+0.001000: 93.3%
+0.001259: 93.2%
+0.001585: 93.3%
+0.001995: 93.1%
+0.002512: 92.8%
+0.003162: 92.5%
+0.003981: 92.2%
+0.005012: 91.7%
+0.006310: 91.3%
+0.007943: 90.8%
+
