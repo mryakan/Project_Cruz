@@ -110,13 +110,14 @@ def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_datas
         display_acc_vs_reg_results(acc_list, reg_list)
 
 def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
-                 apply_regularization=False):
+                 apply_regularization=False, use_dropout=False):
     """Run Stochastic Gradient Descent training"""
     batch_size = 128
     num_nodes = 1024 # no of nodes in hidden layer
     print("Building Stochastic Gradient Descent Graph using batch size = %s and a %s node RELU hidden layer" %
           (batch_size, num_nodes))
-    graph, helpers = tf_sgd_build_graph_relu(batch_size, num_nodes, valid_dataset, test_dataset, num_labels, image_size)
+    graph, helpers = tf_sgd_build_graph_relu(batch_size, num_nodes, valid_dataset, test_dataset,
+                                             num_labels, image_size, use_dropout=use_dropout)
     num_steps = 3000 #10000 if not apply_regularization else 3000
     # You can enduce overfitting by changing num_batches to small # such as 3
     num_batches = 0
@@ -126,9 +127,9 @@ def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_
     acc_list = []
     verbose = True if not apply_regularization else False
     for l2_reg_beta in l2_reg_beta_l:
-        print("Starting training using Stochastic Gradient Descent %s (num_steps=%s) ..." %
+        print("Starting training using Stochastic Gradient Descent %s %s(num_steps=%s) ..." %
               ('with L2 regularization beta=%f' % l2_reg_beta if apply_regularization else 'without regularization',
-               num_steps))
+               'using dropout ' if use_dropout else '', num_steps))
         start = time.time()
         accuracy = tf_sgd_train(graph, num_steps, batch_size, helpers,
                                 train_dataset, train_labels, valid_labels, test_labels,
@@ -159,7 +160,7 @@ def main():
         return False
 
     # 1st run gradient descent
-    #run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # switch to stochastic gradient descent training instead, which is much faster
     run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # Now run with regularization
@@ -170,6 +171,9 @@ def main():
     # Now run with regularization
     run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
                  apply_regularization=True)
+    # Redo with dropout
+    run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+                 use_dropout=True)
 
     #print('label', train_labels[1], ':\n', train_dataset[1])
     # san_file = reg_file.replace('.pickle', '_sanitized.pickle')

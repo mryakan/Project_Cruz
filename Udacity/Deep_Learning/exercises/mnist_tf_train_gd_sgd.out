@@ -1099,3 +1099,156 @@ L2 regularization 'beta': Test accuracy
 0.006310: 91.3%
 0.007943: 90.8%
 
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization using dropout(num_steps=3000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 509.933990
+Minibatch accuracy: 10.9%
+Validation accuracy: 40.1%
+@step 500
+Minibatch Loss: 36.413757
+Minibatch accuracy: 75.8%
+Validation accuracy: 79.1%
+@step 1000
+Minibatch Loss: 15.734043
+Minibatch accuracy: 77.3%
+Validation accuracy: 81.0%
+@step 1500
+Minibatch Loss: 24.244425
+Minibatch accuracy: 74.2%
+Validation accuracy: 79.4%
+@step 2000
+Minibatch Loss: 17.464670
+Minibatch accuracy: 73.4%
+Validation accuracy: 78.7%
+@step 2500
+Minibatch Loss: 4.475792
+Minibatch accuracy: 75.0%
+Validation accuracy: 80.1%
+@step 3000
+Minibatch Loss: 5.412716
+Minibatch accuracy: 75.8%
+Validation accuracy: 79.7%
+@Done
+Test accuracy: 87.2%
+Training completed (elapsed time = 69.90234923362732 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization (num_steps=100) ...
+>Restricting # of batches to only 3
+@Initialized...
+@step 0
+Minibatch Loss: 408.772430
+Minibatch accuracy: 7.0%
+Validation accuracy: 30.0%
+@step 10
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 20
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 30
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 40
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 50
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 60
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 70
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 80
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 90
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 100
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@Done
+Test accuracy: 71.3%
+Training completed (elapsed time = 5.236328125 seconds).
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization using dropout (num_steps=100) ...
+>Restricting # of batches to only 3
+@Initialized...
+@step 0
+Minibatch Loss: 435.879028
+Minibatch accuracy: 14.8%
+Validation accuracy: 30.8%
+@step 10
+Minibatch Loss: 2.200839
+Minibatch accuracy: 98.4%
+Validation accuracy: 68.1%
+@step 20
+Minibatch Loss: 2.199349
+Minibatch accuracy: 99.2%
+Validation accuracy: 69.6%
+@step 30
+Minibatch Loss: 1.500454
+Minibatch accuracy: 98.4%
+Validation accuracy: 69.5%
+@step 40
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 70.0%
+@step 50
+Minibatch Loss: 0.394315
+Minibatch accuracy: 99.2%
+Validation accuracy: 70.2%
+@step 60
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 69.4%
+@step 70
+Minibatch Loss: 2.542278
+Minibatch accuracy: 99.2%
+Validation accuracy: 69.6%
+@step 80
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 70.3%
+@step 90
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 70.7%
+@step 100
+Minibatch Loss: 1.524081
+Minibatch accuracy: 99.2%
+Validation accuracy: 70.0%
+@Done
+Test accuracy: 77.8%
+Training completed (elapsed time = 5.512979745864868 seconds).
+

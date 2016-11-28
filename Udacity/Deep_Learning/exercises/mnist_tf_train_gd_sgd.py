@@ -316,7 +316,8 @@ def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, imag
                tf_train_dataset, tf_train_labels, tf_l2_reg_beta)
     return graph, helpers
 
-def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_dataset, num_labels, image_size):  # pylint: disable=R0914
+def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_dataset, # pylint: disable=R0914
+                            num_labels, image_size, use_dropout=False):
     """
     load all the data into TensorFlow and build the computation graph for stochastic gradient descent training
     Add a hidden RELU layer with 'num_hidden_nodes'
@@ -342,6 +343,9 @@ def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_da
         # Training computation for RELU hidden layer
         logits_a = tf.matmul(tf_train_dataset, weights_a) + biases_a
         relu_hidden_layer = tf.nn.relu(logits_a)
+        if use_dropout:
+            keep_prob = 0.5 # drop half, keep half
+            relu_hidden_layer = tf.nn.dropout(relu_hidden_layer, keep_prob)
         # Next layer
         logits_b = tf.matmul(relu_hidden_layer, weights_b) + biases_b
         l2_regularization_param = tf_l2_reg_beta * (tf.nn.l2_loss(weights_a) + tf.nn.l2_loss(weights_b))
@@ -376,6 +380,8 @@ def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_lab
     optimizer, loss, train_prediction, valid_prediction, test_prediction, \
     tf_train_dataset, tf_train_labels, tf_l2_reg_beta = helpers
     acc = 0
+    if num_batches:
+        print(">Restricting # of batches to only", num_batches)
     with tf.Session(graph=graph) as session:
         init_op = tf.initialize_all_variables()
         session.run(init_op) # pylint: disable=E1101
