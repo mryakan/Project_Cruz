@@ -88,7 +88,10 @@ def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_datas
     print("Building Stochastic Gradient Descent Graph using batch size =", batch_size)
     graph, helpers = tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, image_size)
     num_steps = 3000 # 10000 if not apply_regularization else 3000
+    # You can enduce overfitting by changing num_batches to small # such as 3
+    num_batches = 0
     reg_list = [pow(10, i) for i in np.arange(-4, -2, 0.1)]
+    reg_list = [1e-3] # Just use one value for now
     l2_reg_beta_l = reg_list if apply_regularization else [0.]
     acc_list = []
     verbose = True if not apply_regularization else False
@@ -99,11 +102,11 @@ def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_datas
         start = time.time()
         accuracy = tf_sgd_train(graph, num_steps, batch_size, helpers,
                                 train_dataset, train_labels, valid_labels, test_labels,
-                                l2_reg_beta=l2_reg_beta, verbose=verbose)
+                                l2_reg_beta=l2_reg_beta, verbose=verbose, num_batches=num_batches)
         end = time.time()
-        print("Training completed (elapsed time = %s seconds)." % (end - start))
+        print("Training completed (elapsed time = %s seconds).\n" % (end - start))
         acc_list.append(accuracy)
-    if apply_regularization:
+    if apply_regularization and len(reg_list) > 1:
         display_acc_vs_reg_results(acc_list, reg_list)
 
 def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
@@ -115,7 +118,10 @@ def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_
           (batch_size, num_nodes))
     graph, helpers = tf_sgd_build_graph_relu(batch_size, num_nodes, valid_dataset, test_dataset, num_labels, image_size)
     num_steps = 3000 #10000 if not apply_regularization else 3000
+    # You can enduce overfitting by changing num_batches to small # such as 3
+    num_batches = 0
     reg_list = [pow(10, i) for i in np.arange(-4, -2, 0.1)]
+    reg_list = [1e-3] # Just use one value for now
     l2_reg_beta_l = reg_list if apply_regularization else [0.]
     acc_list = []
     verbose = True if not apply_regularization else False
@@ -126,11 +132,11 @@ def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_
         start = time.time()
         accuracy = tf_sgd_train(graph, num_steps, batch_size, helpers,
                                 train_dataset, train_labels, valid_labels, test_labels,
-                                l2_reg_beta=l2_reg_beta, verbose=verbose)
+                                l2_reg_beta=l2_reg_beta, verbose=verbose, num_batches=num_batches)
         end = time.time()
-        print("Training completed (elapsed time = %s seconds)." % (end - start))
+        print("Training completed (elapsed time = %s seconds).\n" % (end - start))
         acc_list.append(accuracy)
-    if apply_regularization:
+    if apply_regularization and len(reg_list) > 1:
         display_acc_vs_reg_results(acc_list, reg_list)
 
 def main():
@@ -155,10 +161,10 @@ def main():
     # 1st run gradient descent
     #run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # switch to stochastic gradient descent training instead, which is much faster
-    #run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # Now run with regularization
-    #run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
-    #        apply_regularization=True)
+    run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+            apply_regularization=True)
     # Now stochastic gradient descent training with RELU hidden layer, which should be more accurate
     run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # Now run with regularization

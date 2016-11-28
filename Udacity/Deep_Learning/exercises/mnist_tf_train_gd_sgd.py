@@ -368,7 +368,7 @@ def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_da
     return graph, helpers
 
 def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_labels, valid_labels, test_labels,  # pylint: disable=R0913, R0914
-                 l2_reg_beta=0, verbose=True):
+                 l2_reg_beta=0, verbose=True, num_batches=0):
     """
     Run the computation and iterate 'num_steps' times
     Use optional L2 regularization if 'l2_reg_beta' is != 0
@@ -384,7 +384,11 @@ def tf_sgd_train(graph, num_steps, batch_size, helpers, train_dataset, train_lab
         for step in range(num_steps+1):
             # Pick an offset within the training data, which has been randomized.
             # Note: we could use better randomization across epochs.
-            offset = (step * batch_size) % (train_labels.shape[0] - batch_size)
+            if num_batches:
+                # restrict learning to a specified # of batches
+                offset = step % num_batches
+            else:
+                offset = (step * batch_size) % (train_labels.shape[0] - batch_size)
             # Generate a minibatch.
             batch_data = train_dataset[offset:(offset + batch_size), :]
             batch_labels = train_labels[offset:(offset + batch_size), :]
