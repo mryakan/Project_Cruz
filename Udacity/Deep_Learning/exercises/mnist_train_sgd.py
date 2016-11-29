@@ -119,6 +119,9 @@ def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_
     graph, helpers = tf_sgd_build_graph_relu(batch_size, num_nodes, valid_dataset, test_dataset,
                                              num_labels, image_size, use_dropout=use_dropout, use_exp_decay=use_decay)
     num_steps = 200000 #10000 if not apply_regularization else 3000
+    datasize = len(train_labels)
+    if num_steps > datasize:
+        num_steps = datasize
     # You can induce overfitting by changing num_batches to small # such as 3
     num_batches = 0
     reg_list = [pow(10, i) for i in np.arange(-4, -2, 0.1)]
@@ -170,23 +173,26 @@ def main():
     # Now stochastic gradient descent training with RELU hidden layer, which should be more accurate
     #run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # Now run with regularization
-    run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
-                 apply_regularization=True)
+    # run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+    #              apply_regularization=True)
     # Redo with dropout
     #run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
     #             use_dropout=True)
     # Now redo with learning rate decay
-    run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
-                 apply_regularization=True, use_decay=True)
+    # run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+    #              apply_regularization=True, use_decay=True)
 
     #print('label', train_labels[1], ':\n', train_dataset[1])
-    # san_file = reg_file.replace('.pickle', '_sanitized.pickle')
-    # success, train_dataset_s, train_labels_s, valid_dataset_s, valid_labels_s, test_dataset_s, test_labels_s = \
-    #     load_datasets_separate(san_file, reshape=True, num_labels=num_labels, image_size=image_size,
-    #                            verbose=True, description='Sanitized')
-    # if not success:
-    #     print("...Skipping it!")  # continue anyway
+    san_file = reg_file.replace('.pickle', '_sanitized.pickle')
+    success, train_dataset_s, train_labels_s, valid_dataset_s, valid_labels_s, test_dataset_s, test_labels_s = \
+        load_datasets_separate(san_file, reshape=True, num_labels=num_labels, image_size=image_size,
+                               verbose=True, description='Sanitized')
+    if not success:
+        print("...Skipping it!")  # continue anyway
+        return True
     #print('label', train_labels_s[1], ':\n', train_dataset_s[1])
+    run_sgd_relu(train_dataset_s, train_labels_s, valid_dataset_s, valid_labels_s, test_dataset_s, test_labels_s,
+                 apply_regularization=True, use_decay=True)
     return True
 
 if __name__ == '__main__':
