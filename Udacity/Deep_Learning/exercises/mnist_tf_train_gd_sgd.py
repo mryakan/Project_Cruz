@@ -317,7 +317,7 @@ def tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, imag
     return graph, helpers
 
 def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_dataset, # pylint: disable=R0914
-                            num_labels, image_size, use_dropout=False):
+                            num_labels, image_size, use_dropout=False, use_exp_decay=False):
     """
     load all the data into TensorFlow and build the computation graph for stochastic gradient descent training
     Add a hidden RELU layer with 'num_hidden_nodes'
@@ -353,8 +353,18 @@ def tf_sgd_build_graph_relu(batch_size, num_hidden_nodes, valid_dataset, test_da
                               l2_regularization_param
 
         # Optimizer.
-        learn_rate = 0.5
-        optimizer = tf.train.GradientDescentOptimizer(learn_rate).minimize(loss)
+        starter_learning_rate = 0.5
+        if use_exp_decay:
+            learn_rate = starter_learning_rate
+            global_step = tf.Variable(0, trainable=False)
+            num_decay_steps = 1000
+            decay_rate = 0.96
+            learn_rate = tf.train.exponential_decay(learn_rate, global_step,
+                                                    num_decay_steps, decay_rate, staircase=True)
+            optimizer = tf.train.GradientDescentOptimizer(learn_rate).minimize(loss, global_step=global_step)
+
+        else:
+            optimizer = tf.train.GradientDescentOptimizer(starter_learning_rate).minimize(loss)
 
         # Predictions for the training, validation, and test data.
         train_prediction = tf.nn.softmax(logits_b)

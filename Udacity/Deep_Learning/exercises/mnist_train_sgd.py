@@ -88,7 +88,7 @@ def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_datas
     print("Building Stochastic Gradient Descent Graph using batch size =", batch_size)
     graph, helpers = tf_sgd_build_graph(batch_size, valid_dataset, test_dataset, num_labels, image_size)
     num_steps = 3000 # 10000 if not apply_regularization else 3000
-    # You can enduce overfitting by changing num_batches to small # such as 3
+    # You can induce overfitting by changing num_batches to small # such as 3
     num_batches = 0
     reg_list = [pow(10, i) for i in np.arange(-4, -2, 0.1)]
     reg_list = [1e-3] # Just use one value for now
@@ -109,27 +109,28 @@ def run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_datas
     if apply_regularization and len(reg_list) > 1:
         display_acc_vs_reg_results(acc_list, reg_list)
 
-def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
-                 apply_regularization=False, use_dropout=False):
+def run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,  # pylint: disable=R0913
+                 apply_regularization=False, use_dropout=False, use_decay=False):
     """Run Stochastic Gradient Descent training"""
     batch_size = 128
     num_nodes = 1024 # no of nodes in hidden layer
     print("Building Stochastic Gradient Descent Graph using batch size = %s and a %s node RELU hidden layer" %
           (batch_size, num_nodes))
     graph, helpers = tf_sgd_build_graph_relu(batch_size, num_nodes, valid_dataset, test_dataset,
-                                             num_labels, image_size, use_dropout=use_dropout)
-    num_steps = 3000 #10000 if not apply_regularization else 3000
-    # You can enduce overfitting by changing num_batches to small # such as 3
+                                             num_labels, image_size, use_dropout=use_dropout, use_exp_decay=use_decay)
+    num_steps = 200000 #10000 if not apply_regularization else 3000
+    # You can induce overfitting by changing num_batches to small # such as 3
     num_batches = 0
     reg_list = [pow(10, i) for i in np.arange(-4, -2, 0.1)]
     reg_list = [1e-3] # Just use one value for now
     l2_reg_beta_l = reg_list if apply_regularization else [0.]
     acc_list = []
-    verbose = True if not apply_regularization else False
+    verbose = True if not apply_regularization or use_decay else False
     for l2_reg_beta in l2_reg_beta_l:
-        print("Starting training using Stochastic Gradient Descent %s %s(num_steps=%s) ..." %
+        print("Starting training using Stochastic Gradient Descent %s %s%s(num_steps=%s) ..." %
               ('with L2 regularization beta=%f' % l2_reg_beta if apply_regularization else 'without regularization',
-               'using dropout ' if use_dropout else '', num_steps))
+               'using dropout ' if use_dropout else '', 'and exponential decay ' if use_decay else '',
+               num_steps))
         start = time.time()
         accuracy = tf_sgd_train(graph, num_steps, batch_size, helpers,
                                 train_dataset, train_labels, valid_labels, test_labels,
@@ -160,20 +161,23 @@ def main():
         return False
 
     # 1st run gradient descent
-    run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    #run_gd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # switch to stochastic gradient descent training instead, which is much faster
-    run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    #run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # Now run with regularization
-    run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
-            apply_regularization=True)
+    #run_sgd(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+    #        apply_regularization=True)
     # Now stochastic gradient descent training with RELU hidden layer, which should be more accurate
-    run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
+    #run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels)
     # Now run with regularization
     run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
                  apply_regularization=True)
     # Redo with dropout
+    #run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
+    #             use_dropout=True)
+    # Now redo with learning rate decay
     run_sgd_relu(train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels,
-                 use_dropout=True)
+                 apply_regularization=True, use_decay=True)
 
     #print('label', train_labels[1], ':\n', train_dataset[1])
     # san_file = reg_file.replace('.pickle', '_sanitized.pickle')
