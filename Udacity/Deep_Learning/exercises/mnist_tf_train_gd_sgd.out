@@ -104,6 +104,7 @@ Validation accuracy: 76.6%
 @Done
 Test accuracy: 84.1%
 Training completed (elapsed time = 121.08584570884705 seconds).
+
 [tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
 
 Enter top level directory containing the pickled dataset files [default='.']:
@@ -1367,3 +1368,70 @@ Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 nod
 Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=184721) ...
 Test accuracy: 94.6%
 Training completed (elapsed time = 3840.8956480026245 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=3000) ...
+Test accuracy: 93.8%
+Training completed (elapsed time = 102.87272787094116 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=10000) ...
+Test accuracy: 94.9%
+Training completed (elapsed time = 348.3472638130188 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=10000) ...
+Test accuracy: 95.2%
+Training completed (elapsed time = 352.3213560581207 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=200000) ...
+Test accuracy: 96.5%
+Training completed (elapsed time = 7152.615491867065 seconds).

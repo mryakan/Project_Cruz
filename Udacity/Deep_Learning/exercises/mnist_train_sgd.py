@@ -183,7 +183,7 @@ def run_sgd_reluN(num_nodes_l, datasets, apply_regularization=False, use_dropout
                                               image_size_G*image_size_G, num_labels_G,
                                               use_dropout=use_dropout, use_exp_decay=use_decay)
 
-    num_steps = 3000 #10000 if not apply_regularization else 3000
+    num_steps = 200000 #10000 if not apply_regularization else 3000
 
     datasize = len(train_labels)
     if num_steps > datasize:
@@ -247,7 +247,7 @@ def run_training(): # pylint: disable=R0912
                 'relu_reg_alt': False,
                 'relu_drop': False,
                 'relu_reg_decay': False,
-                'relu_reg_3l': False
+                'relu_reg_3l': True
                },
         'sanitized_data': {'Main': False,
                            'sgd_relu_1_reg': False
@@ -283,8 +283,9 @@ def run_training(): # pylint: disable=R0912
             run_sgd_relu(datasets, apply_regularization=True, use_decay=True)
         # with 3 layers!
         if en_matrix['sgd']['relu_reg_3l']:
-            num_nodes = [1024, 512, 256]  # no of nodes in hidden layers
-            run_sgd_reluN(num_nodes, datasets, apply_regularization=True, verbose=True)
+            # no of nodes in hidden layers
+            num_nodes = [1024, 512, 256, 128]
+            run_sgd_reluN(num_nodes, datasets, apply_regularization=True, use_decay=True, verbose=True)
 
     # Now Load sanitized data and train on it
     if en_matrix['sanitized_data']['Main']:
