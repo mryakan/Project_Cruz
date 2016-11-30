@@ -51,26 +51,26 @@ def init_bias_var(val, shape):
     """Initialize Bias to specified value, shape"""
     return tf.Variable(tf.constant(val, shape=shape, dtype=tf.float32))
 
-def init_weights_and_biases(graph, num_hidden_layers, num_hidden_nodes, in_dim, out_dim):
+def init_weights_and_biases(graph, num_hidden_layers, num_hidden_nodes_l, in_dim, out_dim):
     """Initialize the weights and biases for a graph with 'num_hidden_layers' hidden layers"""
     with graph.as_default():
-        # 1st (hidden) layer is (image_size x image_size) -> num_hidden_nodes
+        # 1st (hidden) layer is in_dim -> num_hidden_nodes
         # 2nd layer is num_hidden_nodes[0] -> num_hidden_nodes[1]
         # ...
-        # Last layer is num_hidden_nodes[num_hidden_layers-1] -> num_labels
+        # Last layer is num_hidden_nodes[num_hidden_layers-1] -> out_dim
         weights_l = []
         biases_l = []
-        for layer in num_hidden_layers:
+        for layer in range(num_hidden_layers+1):
             #stddev = np.sqrt(2.0 / num_hidden_nodes[layer - 1]) if layer else None
             stddev = 0.1
             if layer == 0:
-                weights = init_weight_var([in_dim, num_hidden_nodes[layer]])
-                biases = init_bias_var(0, [num_hidden_nodes[layer]])
+                weights = init_weight_var([in_dim, num_hidden_nodes_l[layer]])
+                biases = init_bias_var(0, [num_hidden_nodes_l[layer]])
             elif layer < num_hidden_layers:
-                weights = init_weight_var([num_hidden_nodes[layer - 1], num_hidden_nodes[layer]], stddev=stddev)
-                biases = init_bias_var(0, [num_hidden_nodes[layer]])
+                weights = init_weight_var([num_hidden_nodes_l[layer - 1], num_hidden_nodes_l[layer]], stddev=stddev)
+                biases = init_bias_var(0, [num_hidden_nodes_l[layer]])
             else:
-                weights = init_weight_var([num_hidden_nodes[num_hidden_layers - 1], out_dim], stddev=stddev)
+                weights = init_weight_var([num_hidden_nodes_l[num_hidden_layers - 1], out_dim], stddev=stddev)
                 biases = init_bias_var(0, [out_dim])
             weights_l.append(weights)
             biases_l.append(biases)
@@ -80,7 +80,7 @@ def forward_prop(graph, num_hidden_layers, input_dataset, weights_l, biases_l, u
     """Do forward propagation"""
     with graph.as_default():
         logits_l = []
-        for layer in num_hidden_layers:
+        for layer in range(num_hidden_layers+1):
             if layer == 0:
                 input_l = input_dataset
             else:
@@ -96,29 +96,29 @@ def forward_prop(graph, num_hidden_layers, input_dataset, weights_l, biases_l, u
             logits_l.append(logits)
     return logits_l
 
-def tf_sgd_build_graph_reluX(batch_size, num_hidden_nodes, valid_dataset, test_dataset, # pylint: disable=R0914
-                             num_labels, image_size, use_dropout=False, use_exp_decay=False):
+def tf_sgd_build_graph_reluN(batch_size, num_hidden_nodes_l, valid_dataset, test_dataset, # pylint: disable=R0914
+                             in_dim, out_dim, use_dropout=False, use_exp_decay=False):
     """
     load all the data into TensorFlow and build the computation graph for stochastic gradient descent training
     Add 'num_hidden_layers' hidden RELU layers with corresponding 'num_hidden_nodes'
     """
-    if not isinstance(num_hidden_nodes, list):
+    if not isinstance(num_hidden_nodes_l, list):
         print("ERROR: 'num_hidden_nodes' MUST be a list.")
         return None, None
-    num_hidden_layers = len(num_hidden_nodes)
+    num_hidden_layers = len(num_hidden_nodes_l)
     graph = tf.Graph()
     with graph.as_default():
         # Input data.
         #   For the training data, we use a placeholder that will be fed at run time with a training minibatch.
-        tf_train_dataset = tf.placeholder(tf.float32, shape=(batch_size, image_size * image_size))
-        tf_train_labels = tf.placeholder(tf.float32, shape=(batch_size, num_labels))
+        tf_train_dataset = tf.placeholder(tf.float32, shape=(batch_size, in_dim))
+        tf_train_labels = tf.placeholder(tf.float32, shape=(batch_size, out_dim))
         tf_valid_dataset = tf.constant(valid_dataset)
         tf_test_dataset = tf.constant(test_dataset)
         tf_l2_reg_beta = tf.placeholder(tf.float32)
 
         # Variables.
-        weights_l, biases_l = init_weights_and_biases(graph, num_hidden_layers, num_hidden_nodes,
-                                                      image_size*image_size, num_labels)
+        weights_l, biases_l = init_weights_and_biases(graph, num_hidden_layers, num_hidden_nodes_l,
+                                                      in_dim, out_dim)
 
         # Training computation for RELU hidden layers
         logits_l = forward_prop(graph, num_hidden_layers, tf_train_dataset, weights_l, biases_l,

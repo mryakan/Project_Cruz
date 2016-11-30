@@ -41,7 +41,7 @@ import sys
 import time
 import matplotlib.pyplot as plt
 import numpy as np
-from tf_train_sgd_lib import tf_sgd_build_graph_reluX, tf_sgd_train
+from tf_train_sgd_lib import tf_sgd_build_graph_reluN, tf_sgd_train
 from mnist_common import prompt_topdir, load_datasets_separate
 from mnist_tf_train_gd_sgd import tf_gd_build_graph, tf_gd_train, tf_sgd_build_graph, tf_sgd_build_graph_relu
 
@@ -170,17 +170,17 @@ def run_sgd_relu(datasets, apply_regularization=False, use_dropout=False, use_de
 
     return True
 
-def run_sgd_reluX(num_nodes, datasets, apply_regularization=False, use_dropout=False, use_decay=False, verbose=False):
-    """Run Stochastic Gradient Descent training with N hidden RELU units defined by 'num_nodes'"""
+def run_sgd_reluN(num_nodes_l, datasets, apply_regularization=False, use_dropout=False, use_decay=False, verbose=False):
+    """Run Stochastic Gradient Descent training with N hidden RELU units defined by 'num_nodes_l' list"""
 
     train_dataset, train_labels, valid_dataset, valid_labels, test_dataset, test_labels = datasets # pylint: disable=W0612
 
     batch_size = 128
 
     print("Building Stochastic Gradient Descent Graph using batch size = %s "
-          "and a %s RELU hidden layers (num_nodes=%s)" % (batch_size, len(num_nodes), num_nodes))
-    graph, helpers = tf_sgd_build_graph_reluX(batch_size, num_nodes, valid_dataset, test_dataset,
-                                              num_labels_G, image_size_G,
+          "and a %s RELU hidden layers (num_nodes=%s)" % (batch_size, len(num_nodes_l), num_nodes_l))
+    graph, helpers = tf_sgd_build_graph_reluN(batch_size, num_nodes_l, valid_dataset, test_dataset,
+                                              image_size_G*image_size_G, num_labels_G,
                                               use_dropout=use_dropout, use_exp_decay=use_decay)
 
     num_steps = 3000 #10000 if not apply_regularization else 3000
@@ -272,9 +272,9 @@ def run_training(): # pylint: disable=R0912
         if en_matrix['sgd']['relu_reg']:
             run_sgd_relu(datasets, apply_regularization=True)
         # Alternate identical way
-        if en_matrix['sgd']['relu_reg']:
+        if en_matrix['sgd']['relu_reg_alt']:
             num_nodes = [1024]  # no of nodes in hidden layers
-            run_sgd_reluX(num_nodes, datasets, apply_regularization=True, verbose=True)
+            run_sgd_reluN(num_nodes, datasets, apply_regularization=True, verbose=True)
         # Redo with dropout
         if en_matrix['sgd']['relu_drop']:
             run_sgd_relu(datasets, use_dropout=True)
@@ -284,7 +284,7 @@ def run_training(): # pylint: disable=R0912
         # with 3 layers!
         if en_matrix['sgd']['relu_reg_3l']:
             num_nodes = [1024, 512, 256]  # no of nodes in hidden layers
-            run_sgd_reluX(num_nodes, datasets, apply_regularization=True, verbose=True)
+            run_sgd_reluN(num_nodes, datasets, apply_regularization=True, verbose=True)
 
     # Now Load sanitized data and train on it
     if en_matrix['sanitized_data']['Main']:
