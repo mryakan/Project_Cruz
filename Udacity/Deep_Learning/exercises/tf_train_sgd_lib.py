@@ -35,6 +35,7 @@ with support for multi-layer neural networks with RELU (REctified Linear Units) 
 """
 
 import tensorflow as tf
+import numpy as np
 from mnist_common import calc_accuracy
 
 def init_weight_var(shape, stddev=0):
@@ -61,17 +62,17 @@ def init_weights_and_biases(graph, num_hidden_layers, num_hidden_nodes_l, in_dim
         weights_l = []
         biases_l = []
         for layer in range(num_hidden_layers+1):
-            #stddev = np.sqrt(2.0 / num_hidden_nodes[layer - 1]) if layer else None
-            stddev = 0.1
+            stddev = np.sqrt(2.0 / num_hidden_nodes_l[layer-1]) if layer else np.sqrt(2.0 / in_dim)
+            #stddev = 0.1
             if layer == 0:
-                weights = init_weight_var([in_dim, num_hidden_nodes_l[layer]])
+                weights = init_weight_var([in_dim, num_hidden_nodes_l[layer]], stddev=stddev)
                 biases = init_bias_var(0, [num_hidden_nodes_l[layer]])
             elif layer < num_hidden_layers:
                 weights = init_weight_var([num_hidden_nodes_l[layer - 1], num_hidden_nodes_l[layer]], stddev=stddev)
-                biases = init_bias_var(0, [num_hidden_nodes_l[layer]])
+                biases = init_bias_var(0.1, [num_hidden_nodes_l[layer]])
             else:
                 weights = init_weight_var([num_hidden_nodes_l[num_hidden_layers - 1], out_dim], stddev=stddev)
-                biases = init_bias_var(0, [out_dim])
+                biases = init_bias_var(0.1, [out_dim])
             weights_l.append(weights)
             biases_l.append(biases)
     return weights_l, biases_l
@@ -88,7 +89,7 @@ def forward_prop(graph, num_hidden_layers, input_dataset, weights_l, biases_l, u
             # Calc WX+b for each layer
             logits = tf.matmul(input_l, weights_l[layer]) + biases_l[layer]
             # Apply RELU/Dropout only on hidden layers
-            if layer == num_hidden_layers-1:
+            if layer < num_hidden_layers:
                 logits = tf.nn.relu(logits)
                 if use_dropout:
                     keep_prob = 0.5  # drop half, keep half
