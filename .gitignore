@@ -44,6 +44,7 @@ Thumbs.db
 *.old*
 *~
 *#
+.#*
 
 # IDE Files #
 #############
