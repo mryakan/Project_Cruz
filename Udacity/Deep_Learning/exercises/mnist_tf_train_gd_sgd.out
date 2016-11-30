@@ -1435,3 +1435,29 @@ Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU h
 Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=200000) ...
 Test accuracy: 96.5%
 Training completed (elapsed time = 7152.615491867065 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Trying to load Sanitized dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST_sanitized.pickle
+Loaded Sanitized data.
+  Loaded Sanitized Training set:  (184721, 28, 28) (184721,)
+  Loaded Sanitized Validation set:  (10000, 28, 28) (10000,)
+  Loaded Sanitized Test set:  (10000, 28, 28) (10000,)
+Reformatting Sanitized data...
+  Reshaped Sanitized Training set: (184721, 784) (184721, 10)
+  Reshaped Sanitized Validation set: (10000, 784) (10000, 10)
+  Reshaped Sanitized Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=184721) ...
+Test accuracy: 95.1%
+Training completed (elapsed time = 12577.15624165535 seconds).

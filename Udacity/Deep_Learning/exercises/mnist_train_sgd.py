@@ -247,10 +247,11 @@ def run_training(): # pylint: disable=R0912
                 'relu_reg_alt': False,
                 'relu_drop': False,
                 'relu_reg_decay': False,
-                'relu_reg_3l': True
+                'relu_reg_4l': False
                },
-        'sanitized_data': {'Main': False,
-                           'sgd_relu_1_reg': False
+        'sanitized_data': {'Main': True,
+                           'sgd_relu_1_reg': False,
+                           'sgd_relu_reg_4l': True
                           }
     }
 
@@ -282,7 +283,7 @@ def run_training(): # pylint: disable=R0912
         if en_matrix['sgd']['relu_reg_decay']:
             run_sgd_relu(datasets, apply_regularization=True, use_decay=True)
         # with 3 layers!
-        if en_matrix['sgd']['relu_reg_3l']:
+        if en_matrix['sgd']['relu_reg_4l']:
             # no of nodes in hidden layers
             num_nodes = [1024, 512, 256, 128]
             run_sgd_reluN(num_nodes, datasets, apply_regularization=True, use_decay=True, verbose=True)
@@ -301,6 +302,10 @@ def run_training(): # pylint: disable=R0912
         #print('label', train_labels_s[1], ':\n', train_dataset_s[1])
         if en_matrix['sanitized_data']['sgd_relu_1_reg']:
             run_sgd_relu(datasets_s, apply_regularization=True, use_decay=True)
+        if en_matrix['sanitized_data']['sgd_relu_reg_4l']:
+            # no of nodes in hidden layers
+            num_nodes = [1024, 512, 256, 128]
+            run_sgd_reluN(num_nodes, datasets_s, apply_regularization=True, use_decay=True, verbose=True)
     return True
 
 def main():
