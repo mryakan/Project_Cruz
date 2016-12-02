@@ -77,7 +77,18 @@ def reformat_data(dataset, labels, num_labels, image_size):
     labels = (np.arange(num_labels) == labels[:, None]).astype(np.float32) # pylint: disable=E1101
     return dataset, labels
 
-def load_datasets_separate(pickle_file, reshape=False, num_labels=0, image_size=0, verbose=True, description=''):
+def reformat_data_conv(dataset, labels, num_labels, image_size, num_channels):
+    """
+    Reformat into a shape that's more adapted to the convolutional models we're going to train:
+      - convolutions need the image data formatted as a cube (width by height by #channels)
+      - labels as float 1-hot encodings
+    """
+    dataset = dataset.reshape((-1, image_size, image_size, num_channels)).astype(np.float32) # pylint: disable=E1101
+    labels = (np.arange(num_labels) == labels[:, None]).astype(np.float32) # pylint: disable=E1101
+    return dataset, labels
+
+def load_datasets_separate(pickle_file, reshape=False, conv_num_chan=0, num_labels=0, image_size=0,
+                           verbose=True, description=''):
     """Load the data into separate arrays"""
     if verbose:
         print("Trying to load", description, "dataset from pickle file", pickle_file, ' ')
@@ -102,9 +113,17 @@ def load_datasets_separate(pickle_file, reshape=False, num_labels=0, image_size=
             return False, None, None, None, None, None, None
         if verbose:
             print("Reformatting", description, "data...")
-        train_dataset, train_labels = reformat_data(train_dataset, train_labels, num_labels, image_size)
-        valid_dataset, valid_labels = reformat_data(valid_dataset, valid_labels, num_labels, image_size)
-        test_dataset, test_labels = reformat_data(test_dataset, test_labels, num_labels, image_size)
+        if conv_num_chan:
+            train_dataset, train_labels = reformat_data_conv(train_dataset, train_labels, num_labels, image_size,
+                                                             conv_num_chan)
+            valid_dataset, valid_labels = reformat_data_conv(valid_dataset, valid_labels, num_labels, image_size,
+                                                             conv_num_chan)
+            test_dataset, test_labels = reformat_data_conv(test_dataset, test_labels, num_labels, image_size,
+                                                           conv_num_chan)
+        else:
+            train_dataset, train_labels = reformat_data(train_dataset, train_labels, num_labels, image_size)
+            valid_dataset, valid_labels = reformat_data(valid_dataset, valid_labels, num_labels, image_size)
+            test_dataset, test_labels = reformat_data(test_dataset, test_labels, num_labels, image_size)
         if verbose:
             print('  Reshaped', description, 'Training set:', train_dataset.shape, train_labels.shape)
             print('  Reshaped', description, 'Validation set:', valid_dataset.shape, valid_labels.shape)

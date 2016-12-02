@@ -157,7 +157,8 @@ def tf_sgd_build_graph_reluN(batch_size, num_hidden_nodes_l, valid_dataset, test
                tf_train_dataset, tf_train_labels, tf_l2_reg_beta)
     return graph, helpers
 
-def tf_sgd_train(graph, num_steps, batch_size, helpers, datasets, l2_reg_beta=0, verbose=True, num_batches=0): # pylint: disable=R0914
+def tf_sgd_train(graph, num_steps, batch_size, helpers, datasets, # pylint: disable=R0914, R0913
+                 l2_reg_beta=0, verbose=True, num_batches=0, cnn=False):
     """
     Run the computation and iterate 'num_steps' times
     Use optional L2 regularization if 'l2_reg_beta' is != 0
@@ -186,7 +187,8 @@ def tf_sgd_train(graph, num_steps, batch_size, helpers, datasets, l2_reg_beta=0,
             else:
                 offset = (step * batch_size) % (train_labels.shape[0] - batch_size)
             # Generate a minibatch.
-            batch_data = train_dataset[offset:(offset + batch_size), :]
+            batch_data = train_dataset[offset:(offset + batch_size), :] if not cnn else \
+                train_dataset[offset:(offset + batch_size), :, :, :]
             batch_labels = train_labels[offset:(offset + batch_size), :]
             # Prepare a dictionary telling the session where to feed the minibatch.
             # The key of the dictionary is the placeholder node of the graph to be fed,
