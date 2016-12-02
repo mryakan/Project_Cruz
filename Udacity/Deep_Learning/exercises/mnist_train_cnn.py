@@ -141,7 +141,7 @@ def run_cnn(datasets):
                                         valid_dataset, test_dataset,
                                         image_size_G, num_labels_G, num_channles_G)
 
-    num_steps = 10000
+    num_steps = 1000
 
     datasize = len(train_labels)
     if num_steps > datasize:
@@ -150,6 +150,7 @@ def run_cnn(datasets):
     # You can induce overfitting by changing num_batches to small # such as 3
     num_batches = 0
 
+    print("Starting training using num_steps=%s ..." % num_steps)
     start = time.time()
     tf_sgd_train(graph, num_steps, batch_size, helpers, datasets,
                  verbose=True, num_batches=num_batches)

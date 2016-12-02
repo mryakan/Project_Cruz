@@ -256,3 +256,41 @@ Validation accuracy: 88.0%
 Test accuracy: 93.1%
 Training completed (elapsed time = 100.62782049179077 seconds).
 
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_cnn.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 28, 28, 1) (200000, 10)
+  Reshaped Regular Validation set: (10000, 28, 28, 1) (10000, 10)
+  Reshaped Regular Test set: (10000, 28, 28, 1) (10000, 10)
+Building Graph with 2 layer Convolutional Neural Network followed by one fully connected layer using batch size = 16, patch_size = 5, depth = 16, num_hidden=64
+@step 200000
+Minibatch Loss: 0.190066
+Minibatch accuracy: 93.8%
+Validation accuracy: 90.0%
+@Done
+Test accuracy: 95.5%
+Training completed (elapsed time = 1982.423083305359 seconds).
+
+Trying to load Sanitized dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST_sanitized.pickle
+Loaded Sanitized data.
+  Loaded Sanitized Training set:  (184721, 28, 28) (184721,)
+  Loaded Sanitized Validation set:  (10000, 28, 28) (10000,)
+  Loaded Sanitized Test set:  (10000, 28, 28) (10000,)
+Reformatting Sanitized data...
+  Reshaped Sanitized Training set: (184721, 28, 28, 1) (184721, 10)
+  Reshaped Sanitized Validation set: (10000, 28, 28, 1) (10000, 10)
+  Reshaped Sanitized Test set: (10000, 28, 28, 1) (10000, 10)
+Building Graph with 2 layer Convolutional Neural Network followed by one fully connected layer using batch size = 16, patch_size = 5, depth = 16, num_hidden=64
+@step 184721
+Minibatch Loss: 0.200069
+Minibatch accuracy: 93.8%
+Validation accuracy: 89.3%
+@Done
+Test accuracy: 94.0%
+Training completed (elapsed time = 1822.7627670764923 seconds).
