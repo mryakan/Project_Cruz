@@ -1,0 +1,202 @@
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_cnn.py
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 28, 28, 1) (200000, 10)
+  Reshaped Regular Validation set: (10000, 28, 28, 1) (10000, 10)
+  Reshaped Regular Test set: (10000, 28, 28, 1) (10000, 10)
+Building Graph with 2 layer Convolutional Neural Network followed by one fully connected layer using batch size = 16, patch_size = 5, depth = 16, num_hidden=64
+@Initialized...
+@step 0
+Minibatch Loss: 3.346386
+Minibatch accuracy: 18.8%
+Validation accuracy: 10.0%
+@step 500
+Minibatch Loss: 0.146201
+Minibatch accuracy: 100.0%
+Validation accuracy: 81.2%
+@step 1000
+Minibatch Loss: 0.323310
+Minibatch accuracy: 93.8%
+Validation accuracy: 83.0%
+@step 1500
+Minibatch Loss: 0.662297
+Minibatch accuracy: 87.5%
+Validation accuracy: 84.1%
+@step 2000
+Minibatch Loss: 0.397563
+Minibatch accuracy: 75.0%
+Validation accuracy: 85.5%
+@step 2500
+Minibatch Loss: 0.474392
+Minibatch accuracy: 87.5%
+Validation accuracy: 85.4%
+@step 3000
+Minibatch Loss: 0.157183
+Minibatch accuracy: 100.0%
+Validation accuracy: 86.2%
+@step 3500
+Minibatch Loss: 0.090008
+Minibatch accuracy: 100.0%
+Validation accuracy: 86.3%
+@step 4000
+Minibatch Loss: 0.356061
+Minibatch accuracy: 93.8%
+Validation accuracy: 86.8%
+@step 4500
+Minibatch Loss: 0.187628
+Minibatch accuracy: 93.8%
+Validation accuracy: 87.0%
+@step 5000
+Minibatch Loss: 0.758964
+Minibatch accuracy: 75.0%
+Validation accuracy: 87.0%
+@step 5500
+Minibatch Loss: 0.370870
+Minibatch accuracy: 87.5%
+Validation accuracy: 87.2%
+@step 6000
+Minibatch Loss: 0.923558
+Minibatch accuracy: 75.0%
+Validation accuracy: 87.5%
+@step 6500
+Minibatch Loss: 0.139955
+Minibatch accuracy: 93.8%
+Validation accuracy: 87.8%
+@step 7000
+Minibatch Loss: 0.196028
+Minibatch accuracy: 93.8%
+Validation accuracy: 87.9%
+@step 7500
+Minibatch Loss: 0.685351
+Minibatch accuracy: 75.0%
+Validation accuracy: 87.6%
+@step 8000
+Minibatch Loss: 0.167070
+Minibatch accuracy: 100.0%
+Validation accuracy: 88.3%
+@step 8500
+Minibatch Loss: 0.186625
+Minibatch accuracy: 93.8%
+Validation accuracy: 88.2%
+@step 9000
+Minibatch Loss: 0.396087
+Minibatch accuracy: 93.8%
+Validation accuracy: 88.2%
+@step 9500
+Minibatch Loss: 0.420761
+Minibatch accuracy: 87.5%
+Validation accuracy: 88.5%
+@step 10000
+Minibatch Loss: 0.565065
+Minibatch accuracy: 87.5%
+Validation accuracy: 88.5%
+@Done
+Test accuracy: 94.3%
+Training completed (elapsed time = 101.0402512550354 seconds).
+
+Trying to load Sanitized dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST_sanitized.pickle
+Loaded Sanitized data.
+  Loaded Sanitized Training set:  (184721, 28, 28) (184721,)
+  Loaded Sanitized Validation set:  (10000, 28, 28) (10000,)
+  Loaded Sanitized Test set:  (10000, 28, 28) (10000,)
+Reformatting Sanitized data...
+  Reshaped Sanitized Training set: (184721, 28, 28, 1) (184721, 10)
+  Reshaped Sanitized Validation set: (10000, 28, 28, 1) (10000, 10)
+  Reshaped Sanitized Test set: (10000, 28, 28, 1) (10000, 10)
+Building Graph with 2 layer Convolutional Neural Network followed by one fully connected layer using batch size = 16, patch_size = 5, depth = 16, num_hidden=64
+@Initialized...
+@step 0
+Minibatch Loss: 3.000652
+Minibatch accuracy: 0.0%
+Validation accuracy: 10.1%
+@step 500
+Minibatch Loss: 1.383800
+Minibatch accuracy: 68.8%
+Validation accuracy: 79.5%
+@step 1000
+Minibatch Loss: 0.917649
+Minibatch accuracy: 68.8%
+Validation accuracy: 82.1%
+@step 1500
+Minibatch Loss: 0.256931
+Minibatch accuracy: 87.5%
+Validation accuracy: 82.5%
+@step 2000
+Minibatch Loss: 0.563004
+Minibatch accuracy: 87.5%
+Validation accuracy: 83.8%
+@step 2500
+Minibatch Loss: 0.287617
+Minibatch accuracy: 93.8%
+Validation accuracy: 84.9%
+@step 3000
+Minibatch Loss: 0.226467
+Minibatch accuracy: 93.8%
+Validation accuracy: 85.5%
+@step 3500
+Minibatch Loss: 0.698943
+Minibatch accuracy: 75.0%
+Validation accuracy: 85.6%
+@step 4000
+Minibatch Loss: 0.335270
+Minibatch accuracy: 87.5%
+Validation accuracy: 86.1%
+@step 4500
+Minibatch Loss: 0.325784
+Minibatch accuracy: 93.8%
+Validation accuracy: 86.5%
+@step 5000
+Minibatch Loss: 0.757009
+Minibatch accuracy: 68.8%
+Validation accuracy: 86.4%
+@step 5500
+Minibatch Loss: 0.426249
+Minibatch accuracy: 93.8%
+Validation accuracy: 86.7%
+@step 6000
+Minibatch Loss: 0.316916
+Minibatch accuracy: 87.5%
+Validation accuracy: 86.9%
+@step 6500
+Minibatch Loss: 0.506681
+Minibatch accuracy: 81.2%
+Validation accuracy: 87.2%
+@step 7000
+Minibatch Loss: 0.409107
+Minibatch accuracy: 81.2%
+Validation accuracy: 87.7%
+@step 7500
+Minibatch Loss: 0.969477
+Minibatch accuracy: 81.2%
+Validation accuracy: 87.6%
+@step 8000
+Minibatch Loss: 0.343706
+Minibatch accuracy: 93.8%
+Validation accuracy: 87.3%
+@step 8500
+Minibatch Loss: 0.050412
+Minibatch accuracy: 100.0%
+Validation accuracy: 87.7%
+@step 9000
+Minibatch Loss: 0.327664
+Minibatch accuracy: 87.5%
+Validation accuracy: 88.1%
+@step 9500
+Minibatch Loss: 1.228064
+Minibatch accuracy: 68.8%
+Validation accuracy: 87.8%
+@step 10000
+Minibatch Loss: 0.216652
+Minibatch accuracy: 93.8%
+Validation accuracy: 88.0%
+@Done
+Test accuracy: 93.1%
+Training completed (elapsed time = 100.62782049179077 seconds).
+

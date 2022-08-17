@@ -1,0 +1,1437 @@
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation2 set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Gradient Descent Graph using 10000 training labels
+Starting training using Gradient Descent (num_steps=2049)...
+@Initialized...
+@step 0
+Loss: 20.384291
+Training accuracy: 9.7%
+Validation accuracy: 10.8%
+@step 100
+Loss: 2.347191
+Training accuracy: 71.5%
+Validation accuracy: 70.2%
+@step 200
+Loss: 1.878822
+Training accuracy: 74.7%
+Validation accuracy: 72.9%
+@step 300
+Loss: 1.625058
+Training accuracy: 76.1%
+Validation accuracy: 73.8%
+@step 400
+Loss: 1.456717
+Training accuracy: 77.0%
+Validation accuracy: 74.2%
+@step 500
+Loss: 1.334457
+Training accuracy: 77.5%
+Validation accuracy: 74.6%
+@step 600
+Loss: 1.239944
+Training accuracy: 78.3%
+Validation accuracy: 74.8%
+@step 700
+Loss: 1.163364
+Training accuracy: 78.7%
+Validation accuracy: 75.2%
+@step 800
+Loss: 1.099328
+Training accuracy: 79.1%
+Validation accuracy: 75.3%
+@step 900
+Loss: 1.044632
+Training accuracy: 79.5%
+Validation accuracy: 75.4%
+@step 1000
+Loss: 0.997173
+Training accuracy: 79.9%
+Validation accuracy: 75.5%
+@step 1100
+Loss: 0.955467
+Training accuracy: 80.3%
+Validation accuracy: 75.7%
+@step 1200
+Loss: 0.918425
+Training accuracy: 80.6%
+Validation accuracy: 75.8%
+@step 1300
+Loss: 0.885237
+Training accuracy: 81.0%
+Validation accuracy: 76.0%
+@step 1400
+Loss: 0.855292
+Training accuracy: 81.3%
+Validation accuracy: 76.0%
+@step 1500
+Loss: 0.828120
+Training accuracy: 81.6%
+Validation accuracy: 76.1%
+@step 1600
+Loss: 0.803349
+Training accuracy: 81.8%
+Validation accuracy: 76.2%
+@step 1700
+Loss: 0.780676
+Training accuracy: 82.0%
+Validation accuracy: 76.3%
+@step 1800
+Loss: 0.759852
+Training accuracy: 82.1%
+Validation accuracy: 76.4%
+@step 1900
+Loss: 0.740663
+Training accuracy: 82.4%
+Validation accuracy: 76.7%
+@step 2000
+Loss: 0.722930
+Training accuracy: 82.7%
+Validation accuracy: 76.6%
+@step 2050
+Loss: 0.714559
+Training accuracy: 82.8%
+Validation accuracy: 76.6%
+@Done
+Test accuracy: 84.1%
+Training completed (elapsed time = 121.08584570884705 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Gradient Descent Graph using 20000 training labels
+Starting training using Gradient Descent (num_steps=2049)...
+@Initialized...
+@step 0
+Loss: 17.163387
+Training accuracy: 7.7%
+Validation accuracy: 12.3%
+@step 100
+Loss: 2.417644
+Training accuracy: 71.3%
+Validation accuracy: 70.7%
+@step 200
+Loss: 1.948341
+Training accuracy: 74.3%
+Validation accuracy: 73.2%
+@step 300
+Loss: 1.711039
+Training accuracy: 75.4%
+Validation accuracy: 74.3%
+@step 400
+Loss: 1.553142
+Training accuracy: 76.0%
+Validation accuracy: 75.0%
+@step 500
+Loss: 1.436307
+Training accuracy: 76.5%
+Validation accuracy: 75.5%
+@step 600
+Loss: 1.344590
+Training accuracy: 77.0%
+Validation accuracy: 75.9%
+@step 700
+Loss: 1.269865
+Training accuracy: 77.3%
+Validation accuracy: 76.1%
+@step 800
+Loss: 1.207380
+Training accuracy: 77.5%
+Validation accuracy: 76.3%
+@step 900
+Loss: 1.154111
+Training accuracy: 77.9%
+Validation accuracy: 76.5%
+@step 1000
+Loss: 1.107998
+Training accuracy: 78.2%
+Validation accuracy: 76.6%
+@step 1100
+Loss: 1.067596
+Training accuracy: 78.4%
+Validation accuracy: 76.7%
+@step 1200
+Loss: 1.031843
+Training accuracy: 78.7%
+Validation accuracy: 76.8%
+@step 1300
+Loss: 0.999940
+Training accuracy: 79.0%
+Validation accuracy: 77.0%
+@step 1400
+Loss: 0.971270
+Training accuracy: 79.2%
+Validation accuracy: 77.0%
+@step 1500
+Loss: 0.945347
+Training accuracy: 79.4%
+Validation accuracy: 77.1%
+@step 1600
+Loss: 0.921784
+Training accuracy: 79.7%
+Validation accuracy: 77.1%
+@step 1700
+Loss: 0.900267
+Training accuracy: 79.9%
+Validation accuracy: 77.2%
+@step 1800
+Loss: 0.880538
+Training accuracy: 80.1%
+Validation accuracy: 77.2%
+@step 1900
+Loss: 0.862383
+Training accuracy: 80.4%
+Validation accuracy: 77.3%
+@step 2000
+Loss: 0.845620
+Training accuracy: 80.6%
+Validation accuracy: 77.4%
+@step 2050
+Loss: 0.837712
+Training accuracy: 80.7%
+Validation accuracy: 77.4%
+@Done
+Test accuracy: 84.9%
+Training completed (elapsed time = 229.83150577545166 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Gradient Descent Graph using 200000 training labels
+Starting training using Gradient Descent (num_steps=2050)...
+@Initialized...
+@step 0
+Loss: 17.574409
+Training accuracy: 11.2%
+Validation accuracy: 13.0%
+@step 100
+Loss: 2.491931
+Training accuracy: 71.0%
+Validation accuracy: 70.6%
+@step 200
+Loss: 2.047477
+Training accuracy: 73.8%
+Validation accuracy: 73.5%
+@step 300
+Loss: 1.814883
+Training accuracy: 74.8%
+Validation accuracy: 74.3%
+@step 400
+Loss: 1.661973
+Training accuracy: 75.4%
+Validation accuracy: 74.7%
+@step 500
+Loss: 1.549977
+Training accuracy: 75.8%
+Validation accuracy: 75.2%
+@step 600
+Loss: 1.462295
+Training accuracy: 76.1%
+Validation accuracy: 75.5%
+@step 700
+Loss: 1.390653
+Training accuracy: 76.4%
+Validation accuracy: 75.8%
+@step 800
+Loss: 1.330453
+Training accuracy: 76.7%
+Validation accuracy: 76.1%
+@step 900
+Loss: 1.278826
+Training accuracy: 76.9%
+Validation accuracy: 76.3%
+@step 1000
+Loss: 1.233880
+Training accuracy: 77.1%
+Validation accuracy: 76.7%
+@step 1100
+Loss: 1.194325
+Training accuracy: 77.3%
+Validation accuracy: 76.9%
+@step 1200
+Loss: 1.159165
+Training accuracy: 77.5%
+Validation accuracy: 77.0%
+@step 1300
+Loss: 1.127694
+Training accuracy: 77.7%
+Validation accuracy: 77.2%
+@step 1400
+Loss: 1.099311
+Training accuracy: 77.8%
+Validation accuracy: 77.4%
+@step 1500
+Loss: 1.073602
+Training accuracy: 78.0%
+Validation accuracy: 77.7%
+@step 1600
+Loss: 1.050179
+Training accuracy: 78.1%
+Validation accuracy: 77.9%
+@step 1700
+Loss: 1.028731
+Training accuracy: 78.3%
+Validation accuracy: 78.0%
+@step 1800
+Loss: 1.009049
+Training accuracy: 78.4%
+Validation accuracy: 78.0%
+@step 1900
+Loss: 0.990893
+Training accuracy: 78.5%
+Validation accuracy: 78.2%
+@step 2000
+Loss: 0.974117
+Training accuracy: 78.7%
+Validation accuracy: 78.3%
+@step 2050
+Loss: 0.966191
+Training accuracy: 78.7%
+Validation accuracy: 78.3%
+@Done
+Test accuracy: 86.0%
+Training completed (elapsed time = 2134.528819322586 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent (num_steps=2050)...
+@Initialized...
+@step 0
+Minibatch Loss: 18.366716
+Minibatch accuracy: 9.4%
+Validation accuracy: 11.1%
+@step 100
+Minibatch Loss: 2.654400
+Minibatch accuracy: 72.7%
+Validation accuracy: 69.5%
+@step 200
+Minibatch Loss: 1.565874
+Minibatch accuracy: 77.3%
+Validation accuracy: 72.7%
+@step 300
+Minibatch Loss: 1.700214
+Minibatch accuracy: 76.6%
+Validation accuracy: 74.3%
+@step 400
+Minibatch Loss: 2.021153
+Minibatch accuracy: 69.5%
+Validation accuracy: 74.7%
+@step 500
+Minibatch Loss: 1.544600
+Minibatch accuracy: 79.7%
+Validation accuracy: 75.3%
+@step 600
+Minibatch Loss: 1.747559
+Minibatch accuracy: 77.3%
+Validation accuracy: 75.4%
+@step 700
+Minibatch Loss: 1.755962
+Minibatch accuracy: 68.8%
+Validation accuracy: 75.2%
+@step 800
+Minibatch Loss: 1.089844
+Minibatch accuracy: 82.0%
+Validation accuracy: 75.4%
+@step 900
+Minibatch Loss: 1.094786
+Minibatch accuracy: 78.9%
+Validation accuracy: 76.0%
+@step 1000
+Minibatch Loss: 1.264101
+Minibatch accuracy: 76.6%
+Validation accuracy: 76.5%
+@step 1100
+Minibatch Loss: 0.940743
+Minibatch accuracy: 80.5%
+Validation accuracy: 77.1%
+@step 1200
+Minibatch Loss: 1.758427
+Minibatch accuracy: 77.3%
+Validation accuracy: 76.9%
+@step 1300
+Minibatch Loss: 1.822857
+Minibatch accuracy: 68.8%
+Validation accuracy: 76.6%
+@step 1400
+Minibatch Loss: 1.015659
+Minibatch accuracy: 81.2%
+Validation accuracy: 76.8%
+@step 1500
+Minibatch Loss: 1.070455
+Minibatch accuracy: 82.8%
+Validation accuracy: 76.9%
+@step 1600
+Minibatch Loss: 1.212733
+Minibatch accuracy: 78.1%
+Validation accuracy: 76.5%
+@step 1700
+Minibatch Loss: 0.796694
+Minibatch accuracy: 82.8%
+Validation accuracy: 77.5%
+@step 1800
+Minibatch Loss: 0.838152
+Minibatch accuracy: 82.0%
+Validation accuracy: 77.3%
+@step 1900
+Minibatch Loss: 0.816878
+Minibatch accuracy: 80.5%
+Validation accuracy: 77.0%
+@step 2000
+Minibatch Loss: 1.338024
+Minibatch accuracy: 76.6%
+Validation accuracy: 77.6%
+@step 2050
+Minibatch Loss: 1.343480
+Minibatch accuracy: 74.2%
+Validation accuracy: 77.1%
+@Done
+Test accuracy: 85.3%
+Training completed (elapsed time = 3.5162806510925293 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent (num_steps=10000)...
+@Initialized...
+@step 0
+Minibatch Loss: 19.389563
+Minibatch accuracy: 7.8%
+Validation accuracy: 10.2%
+@step 500
+Minibatch Loss: 2.073940
+Minibatch accuracy: 73.4%
+Validation accuracy: 75.4%
+@step 1000
+Minibatch Loss: 1.330091
+Minibatch accuracy: 80.5%
+Validation accuracy: 76.0%
+@step 1500
+Minibatch Loss: 1.024223
+Minibatch accuracy: 82.8%
+Validation accuracy: 76.8%
+@step 2000
+Minibatch Loss: 1.065653
+Minibatch accuracy: 78.9%
+Validation accuracy: 77.9%
+@step 2500
+Minibatch Loss: 0.832551
+Minibatch accuracy: 75.8%
+Validation accuracy: 77.6%
+@step 3000
+Minibatch Loss: 0.906253
+Minibatch accuracy: 78.9%
+Validation accuracy: 78.4%
+@step 3500
+Minibatch Loss: 1.115503
+Minibatch accuracy: 71.1%
+Validation accuracy: 78.6%
+@step 4000
+Minibatch Loss: 0.865854
+Minibatch accuracy: 78.9%
+Validation accuracy: 79.0%
+@step 4500
+Minibatch Loss: 0.873564
+Minibatch accuracy: 78.9%
+Validation accuracy: 79.2%
+@step 5000
+Minibatch Loss: 1.031677
+Minibatch accuracy: 75.8%
+Validation accuracy: 79.6%
+@step 5500
+Minibatch Loss: 0.786084
+Minibatch accuracy: 80.5%
+Validation accuracy: 79.6%
+@step 6000
+Minibatch Loss: 0.521406
+Minibatch accuracy: 85.2%
+Validation accuracy: 80.2%
+@step 6500
+Minibatch Loss: 0.547902
+Minibatch accuracy: 81.2%
+Validation accuracy: 80.0%
+@step 7000
+Minibatch Loss: 0.477652
+Minibatch accuracy: 89.1%
+Validation accuracy: 80.0%
+@step 7500
+Minibatch Loss: 0.906062
+Minibatch accuracy: 84.4%
+Validation accuracy: 80.1%
+@step 8000
+Minibatch Loss: 0.728599
+Minibatch accuracy: 80.5%
+Validation accuracy: 80.4%
+@step 8500
+Minibatch Loss: 0.777278
+Minibatch accuracy: 82.0%
+Validation accuracy: 80.8%
+@step 9000
+Minibatch Loss: 1.091567
+Minibatch accuracy: 71.1%
+Validation accuracy: 80.7%
+@step 9500
+Minibatch Loss: 0.602535
+Minibatch accuracy: 81.2%
+Validation accuracy: 79.3%
+@step 10000
+Minibatch Loss: 0.559747
+Minibatch accuracy: 83.6%
+Validation accuracy: 80.5%
+@Done
+Test accuracy: 88.1%
+Training completed (elapsed time = 13.436700582504272 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent (num_steps=100000)...
+@Initialized...
+@step 0
+Minibatch Loss: 21.305340
+Minibatch accuracy: 5.5%
+Validation accuracy: 11.5%
+@step 5000
+Minibatch Loss: 1.000507
+Minibatch accuracy: 77.3%
+Validation accuracy: 79.6%
+@step 10000
+Minibatch Loss: 0.602646
+Minibatch accuracy: 85.2%
+Validation accuracy: 80.5%
+@step 15000
+Minibatch Loss: 0.664734
+Minibatch accuracy: 82.8%
+Validation accuracy: 81.3%
+@step 20000
+Minibatch Loss: 0.836212
+Minibatch accuracy: 80.5%
+Validation accuracy: 81.5%
+@step 25000
+Minibatch Loss: 0.679944
+Minibatch accuracy: 80.5%
+Validation accuracy: 80.8%
+@step 30000
+Minibatch Loss: 0.830087
+Minibatch accuracy: 77.3%
+Validation accuracy: 80.8%
+@step 35000
+Minibatch Loss: 0.588108
+Minibatch accuracy: 82.8%
+Validation accuracy: 81.2%
+@step 40000
+Minibatch Loss: 0.717298
+Minibatch accuracy: 76.6%
+Validation accuracy: 81.6%
+@step 45000
+Minibatch Loss: 0.562306
+Minibatch accuracy: 85.9%
+Validation accuracy: 81.6%
+@step 50000
+Minibatch Loss: 0.508330
+Minibatch accuracy: 85.9%
+Validation accuracy: 82.0%
+@step 55000
+Minibatch Loss: 0.504659
+Minibatch accuracy: 85.2%
+Validation accuracy: 81.6%
+@step 60000
+Minibatch Loss: 0.519825
+Minibatch accuracy: 84.4%
+Validation accuracy: 81.5%
+@step 65000
+Minibatch Loss: 0.733511
+Minibatch accuracy: 78.9%
+Validation accuracy: 81.0%
+@step 70000
+Minibatch Loss: 0.936156
+Minibatch accuracy: 78.9%
+Validation accuracy: 81.7%
+@step 75000
+Minibatch Loss: 0.581324
+Minibatch accuracy: 81.2%
+Validation accuracy: 81.7%
+@step 80000
+Minibatch Loss: 0.549222
+Minibatch accuracy: 85.2%
+Validation accuracy: 81.9%
+@step 85000
+Minibatch Loss: 0.472167
+Minibatch accuracy: 83.6%
+Validation accuracy: 81.5%
+@step 90000
+Minibatch Loss: 0.799876
+Minibatch accuracy: 76.6%
+Validation accuracy: 82.0%
+@step 95000
+Minibatch Loss: 0.528800
+Minibatch accuracy: 85.2%
+Validation accuracy: 81.4%
+@step 100000
+Minibatch Loss: 0.789450
+Minibatch accuracy: 79.7%
+Validation accuracy: 82.0%
+@Done
+Test accuracy: 89.2%
+Training completed (elapsed time = 130.0234031677246 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent (num_steps=10000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 411.353577
+Minibatch accuracy: 8.6%
+Validation accuracy: 42.5%
+@step 500
+Minibatch Loss: 12.213131
+Minibatch accuracy: 81.2%
+Validation accuracy: 80.3%
+@step 1000
+Minibatch Loss: 8.509855
+Minibatch accuracy: 87.5%
+Validation accuracy: 80.5%
+@step 1500
+Minibatch Loss: 9.946336
+Minibatch accuracy: 84.4%
+Validation accuracy: 79.2%
+@step 2000
+Minibatch Loss: 9.851585
+Minibatch accuracy: 82.0%
+Validation accuracy: 81.7%
+@step 2500
+Minibatch Loss: 2.694541
+Minibatch accuracy: 87.5%
+Validation accuracy: 82.8%
+@step 3000
+Minibatch Loss: 4.443260
+Minibatch accuracy: 80.5%
+Validation accuracy: 81.8%
+@step 3500
+Minibatch Loss: 3.160938
+Minibatch accuracy: 81.2%
+Validation accuracy: 80.9%
+@step 4000
+Minibatch Loss: 3.128185
+Minibatch accuracy: 83.6%
+Validation accuracy: 82.4%
+@step 4500
+Minibatch Loss: 1.411107
+Minibatch accuracy: 81.2%
+Validation accuracy: 82.4%
+@step 5000
+Minibatch Loss: 3.314402
+Minibatch accuracy: 85.2%
+Validation accuracy: 80.7%
+@step 5500
+Minibatch Loss: 2.629336
+Minibatch accuracy: 87.5%
+Validation accuracy: 82.0%
+@step 6000
+Minibatch Loss: 0.530420
+Minibatch accuracy: 86.7%
+Validation accuracy: 83.2%
+@step 6500
+Minibatch Loss: 1.541503
+Minibatch accuracy: 91.4%
+Validation accuracy: 83.2%
+@step 7000
+Minibatch Loss: 0.531750
+Minibatch accuracy: 92.2%
+Validation accuracy: 83.5%
+@step 7500
+Minibatch Loss: 1.266923
+Minibatch accuracy: 85.2%
+Validation accuracy: 83.1%
+@step 8000
+Minibatch Loss: 1.049487
+Minibatch accuracy: 86.7%
+Validation accuracy: 83.8%
+@step 8500
+Minibatch Loss: 2.025866
+Minibatch accuracy: 82.8%
+Validation accuracy: 83.2%
+@step 9000
+Minibatch Loss: 1.042600
+Minibatch accuracy: 84.4%
+Validation accuracy: 84.3%
+@step 9500
+Minibatch Loss: 0.795953
+Minibatch accuracy: 88.3%
+Validation accuracy: 83.4%
+@step 10000
+Minibatch Loss: 0.505154
+Minibatch accuracy: 92.2%
+Validation accuracy: 83.6%
+@Done
+Test accuracy: 90.5%
+Training completed (elapsed time = 158.2773425579071 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent (num_steps=100000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 353.937103
+Minibatch accuracy: 14.1%
+Validation accuracy: 32.8%
+@step 5000
+Minibatch Loss: 1.800084
+Minibatch accuracy: 82.0%
+Validation accuracy: 80.2%
+@step 10000
+Minibatch Loss: 0.312310
+Minibatch accuracy: 92.2%
+Validation accuracy: 83.3%
+@step 15000
+Minibatch Loss: 0.449082
+Minibatch accuracy: 89.8%
+Validation accuracy: 84.8%
+@step 20000
+Minibatch Loss: 0.258868
+Minibatch accuracy: 92.2%
+Validation accuracy: 85.5%
+@step 25000
+Minibatch Loss: 0.094406
+Minibatch accuracy: 97.7%
+Validation accuracy: 85.7%
+@step 30000
+Minibatch Loss: 1.004619
+Minibatch accuracy: 93.0%
+Validation accuracy: 86.1%
+@step 35000
+Minibatch Loss: 0.075064
+Minibatch accuracy: 96.1%
+Validation accuracy: 85.8%
+@step 40000
+Minibatch Loss: 0.095134
+Minibatch accuracy: 96.9%
+Validation accuracy: 86.7%
+@step 45000
+Minibatch Loss: 0.089477
+Minibatch accuracy: 96.1%
+Validation accuracy: 87.0%
+@step 50000
+Minibatch Loss: 0.027744
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.0%
+@step 55000
+Minibatch Loss: 0.029260
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.0%
+@step 60000
+Minibatch Loss: 0.088396
+Minibatch accuracy: 96.1%
+Validation accuracy: 86.8%
+@step 65000
+Minibatch Loss: 0.127134
+Minibatch accuracy: 97.7%
+Validation accuracy: 86.0%
+@step 70000
+Minibatch Loss: 0.010122
+Minibatch accuracy: 100.0%
+Validation accuracy: 87.1%
+@step 75000
+Minibatch Loss: 0.432376
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.2%
+@step 80000
+Minibatch Loss: 0.089365
+Minibatch accuracy: 97.7%
+Validation accuracy: 87.0%
+@step 85000
+Minibatch Loss: 0.047444
+Minibatch accuracy: 98.4%
+Validation accuracy: 87.0%
+@step 90000
+Minibatch Loss: 0.035342
+Minibatch accuracy: 99.2%
+Validation accuracy: 87.2%
+@step 95000
+Minibatch Loss: 0.011131
+Minibatch accuracy: 100.0%
+Validation accuracy: 87.4%
+@step 100000
+Minibatch Loss: 0.003059
+Minibatch accuracy: 100.0%
+Validation accuracy: 87.3%
+@Done
+Test accuracy: 93.2%
+Training completed (elapsed time = 1534.7193789482117 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent without regularization (num_steps=3000)...
+@Initialized...
+@step 0
+Minibatch Loss: 14.780846
+Minibatch accuracy: 10.9%
+Validation accuracy: 15.0%
+@step 500
+Minibatch Loss: 1.454228
+Minibatch accuracy: 77.3%
+Validation accuracy: 75.1%
+@step 1000
+Minibatch Loss: 1.014768
+Minibatch accuracy: 79.7%
+Validation accuracy: 76.4%
+@step 1500
+Minibatch Loss: 0.711707
+Minibatch accuracy: 85.2%
+Validation accuracy: 77.0%
+@step 2000
+Minibatch Loss: 1.051854
+Minibatch accuracy: 78.1%
+Validation accuracy: 77.7%
+@step 2500
+Minibatch Loss: 0.967072
+Minibatch accuracy: 78.1%
+Validation accuracy: 77.6%
+@step 3000
+Minibatch Loss: 0.972310
+Minibatch accuracy: 77.3%
+Validation accuracy: 78.4%
+@Done
+Test accuracy: 86.0%
+Training completed (elapsed time = 4.517459869384766 seconds).
+Building Stochastic Gradient Descent Graph using batch size = 128
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000100 (num_steps=3000)...
+Test accuracy: 85.7%
+Training completed (elapsed time = 4.251054048538208 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000126 (num_steps=3000)...
+Test accuracy: 86.4%
+Training completed (elapsed time = 4.224914789199829 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000158 (num_steps=3000)...
+Test accuracy: 86.6%
+Training completed (elapsed time = 4.215205907821655 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000200 (num_steps=3000)...
+Test accuracy: 87.4%
+Training completed (elapsed time = 4.369712591171265 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000251 (num_steps=3000)...
+Test accuracy: 87.1%
+Training completed (elapsed time = 4.590500831604004 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000316 (num_steps=3000)...
+Test accuracy: 87.1%
+Training completed (elapsed time = 4.324332237243652 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000398 (num_steps=3000)...
+Test accuracy: 87.2%
+Training completed (elapsed time = 4.239349126815796 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000501 (num_steps=3000)...
+Test accuracy: 87.4%
+Training completed (elapsed time = 4.239513158798218 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000631 (num_steps=3000)...
+Test accuracy: 88.0%
+Training completed (elapsed time = 4.274852752685547 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000794 (num_steps=3000)...
+Test accuracy: 88.0%
+Training completed (elapsed time = 4.180574417114258 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=3000)...
+Test accuracy: 88.3%
+Training completed (elapsed time = 4.23556113243103 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001259 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.176293849945068 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001585 (num_steps=3000)...
+Test accuracy: 88.5%
+Training completed (elapsed time = 4.1795690059661865 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001995 (num_steps=3000)...
+Test accuracy: 88.4%
+Training completed (elapsed time = 4.177227258682251 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.002512 (num_steps=3000)...
+Test accuracy: 88.4%
+Training completed (elapsed time = 4.2684760093688965 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003162 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.171888113021851 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003981 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.173566102981567 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.005012 (num_steps=3000)...
+Test accuracy: 88.2%
+Training completed (elapsed time = 4.151498317718506 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.006310 (num_steps=3000)...
+Test accuracy: 88.1%
+Training completed (elapsed time = 4.174676895141602 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.007943 (num_steps=3000)...
+Test accuracy: 88.0%
+Training completed (elapsed time = 4.180438041687012 seconds).
+L2 regularization 'beta': Test accuracy
+=======================================
+0.000100: 85.7%
+0.000126: 86.4%
+0.000158: 86.6%
+0.000200: 87.4%
+0.000251: 87.1%
+0.000316: 87.1%
+0.000398: 87.2%
+0.000501: 87.4%
+0.000631: 88.0%
+0.000794: 88.0%
+0.001000: 88.3%
+0.001259: 88.2%
+0.001585: 88.5%
+0.001995: 88.4%
+0.002512: 88.4%
+0.003162: 88.2%
+0.003981: 88.2%
+0.005012: 88.2%
+0.006310: 88.1%
+0.007943: 88.0%
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization (num_steps=3000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 344.293182
+Minibatch accuracy: 14.1%
+Validation accuracy: 33.7%
+@step 500
+Minibatch Loss: 20.279419
+Minibatch accuracy: 82.8%
+Validation accuracy: 80.2%
+@step 1000
+Minibatch Loss: 6.795269
+Minibatch accuracy: 80.5%
+Validation accuracy: 81.1%
+@step 1500
+Minibatch Loss: 12.461012
+Minibatch accuracy: 85.2%
+Validation accuracy: 78.8%
+@step 2000
+Minibatch Loss: 12.505983
+Minibatch accuracy: 75.0%
+Validation accuracy: 80.7%
+@step 2500
+Minibatch Loss: 3.648273
+Minibatch accuracy: 79.7%
+Validation accuracy: 81.5%
+@step 3000
+Minibatch Loss: 2.955511
+Minibatch accuracy: 85.2%
+Validation accuracy: 82.0%
+@Done
+Test accuracy: 88.7%
+Training completed (elapsed time = 64.69713020324707 seconds).
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000100 (num_steps=3000) ...
+Test accuracy: 90.0%
+Training completed (elapsed time = 61.56313228607178 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000126 (num_steps=3000) ...
+Test accuracy: 89.8%
+Training completed (elapsed time = 62.08690786361694 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000158 (num_steps=3000) ...
+Test accuracy: 89.7%
+Training completed (elapsed time = 61.78307008743286 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000200 (num_steps=3000) ...
+Test accuracy: 89.7%
+Training completed (elapsed time = 62.12089824676514 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000251 (num_steps=3000) ...
+Test accuracy: 89.9%
+Training completed (elapsed time = 64.68034863471985 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000316 (num_steps=3000) ...
+Test accuracy: 90.1%
+Training completed (elapsed time = 65.37827682495117 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000398 (num_steps=3000) ...
+Test accuracy: 90.9%
+Training completed (elapsed time = 71.0701801776886 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000501 (num_steps=3000) ...
+Test accuracy: 91.7%
+Training completed (elapsed time = 65.52927541732788 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000631 (num_steps=3000) ...
+Test accuracy: 91.8%
+Training completed (elapsed time = 67.02271842956543 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.000794 (num_steps=3000) ...
+Test accuracy: 92.8%
+Training completed (elapsed time = 63.83665609359741 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=3000) ...
+Test accuracy: 93.3%
+Training completed (elapsed time = 64.22742342948914 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001259 (num_steps=3000) ...
+Test accuracy: 93.2%
+Training completed (elapsed time = 63.58773756027222 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001585 (num_steps=3000) ...
+Test accuracy: 93.3%
+Training completed (elapsed time = 62.38886547088623 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001995 (num_steps=3000) ...
+Test accuracy: 93.1%
+Training completed (elapsed time = 64.63395953178406 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.002512 (num_steps=3000) ...
+Test accuracy: 92.8%
+Training completed (elapsed time = 62.749054193496704 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003162 (num_steps=3000) ...
+Test accuracy: 92.5%
+Training completed (elapsed time = 60.22646880149841 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.003981 (num_steps=3000) ...
+Test accuracy: 92.2%
+Training completed (elapsed time = 60.29340648651123 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.005012 (num_steps=3000) ...
+Test accuracy: 91.7%
+Training completed (elapsed time = 62.30061650276184 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.006310 (num_steps=3000) ...
+Test accuracy: 91.3%
+Training completed (elapsed time = 62.996739864349365 seconds).
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.007943 (num_steps=3000) ...
+Test accuracy: 90.8%
+Training completed (elapsed time = 61.9250864982605 seconds).
+L2 regularization 'beta': Test accuracy
+=======================================
+0.000100: 90.0%
+0.000126: 89.8%
+0.000158: 89.7%
+0.000200: 89.7%
+0.000251: 89.9%
+0.000316: 90.1%
+0.000398: 90.9%
+0.000501: 91.7%
+0.000631: 91.8%
+0.000794: 92.8%
+0.001000: 93.3%
+0.001259: 93.2%
+0.001585: 93.3%
+0.001995: 93.1%
+0.002512: 92.8%
+0.003162: 92.5%
+0.003981: 92.2%
+0.005012: 91.7%
+0.006310: 91.3%
+0.007943: 90.8%
+
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization using dropout(num_steps=3000) ...
+@Initialized...
+@step 0
+Minibatch Loss: 509.933990
+Minibatch accuracy: 10.9%
+Validation accuracy: 40.1%
+@step 500
+Minibatch Loss: 36.413757
+Minibatch accuracy: 75.8%
+Validation accuracy: 79.1%
+@step 1000
+Minibatch Loss: 15.734043
+Minibatch accuracy: 77.3%
+Validation accuracy: 81.0%
+@step 1500
+Minibatch Loss: 24.244425
+Minibatch accuracy: 74.2%
+Validation accuracy: 79.4%
+@step 2000
+Minibatch Loss: 17.464670
+Minibatch accuracy: 73.4%
+Validation accuracy: 78.7%
+@step 2500
+Minibatch Loss: 4.475792
+Minibatch accuracy: 75.0%
+Validation accuracy: 80.1%
+@step 3000
+Minibatch Loss: 5.412716
+Minibatch accuracy: 75.8%
+Validation accuracy: 79.7%
+@Done
+Test accuracy: 87.2%
+Training completed (elapsed time = 69.90234923362732 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization (num_steps=100) ...
+>Restricting # of batches to only 3
+@Initialized...
+@step 0
+Minibatch Loss: 408.772430
+Minibatch accuracy: 7.0%
+Validation accuracy: 30.0%
+@step 10
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 20
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 30
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 40
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 50
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 60
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 70
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 80
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 90
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@step 100
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 64.6%
+@Done
+Test accuracy: 71.3%
+Training completed (elapsed time = 5.236328125 seconds).
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent without regularization using dropout (num_steps=100) ...
+>Restricting # of batches to only 3
+@Initialized...
+@step 0
+Minibatch Loss: 435.879028
+Minibatch accuracy: 14.8%
+Validation accuracy: 30.8%
+@step 10
+Minibatch Loss: 2.200839
+Minibatch accuracy: 98.4%
+Validation accuracy: 68.1%
+@step 20
+Minibatch Loss: 2.199349
+Minibatch accuracy: 99.2%
+Validation accuracy: 69.6%
+@step 30
+Minibatch Loss: 1.500454
+Minibatch accuracy: 98.4%
+Validation accuracy: 69.5%
+@step 40
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 70.0%
+@step 50
+Minibatch Loss: 0.394315
+Minibatch accuracy: 99.2%
+Validation accuracy: 70.2%
+@step 60
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 69.4%
+@step 70
+Minibatch Loss: 2.542278
+Minibatch accuracy: 99.2%
+Validation accuracy: 69.6%
+@step 80
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 70.3%
+@step 90
+Minibatch Loss: 0.000000
+Minibatch accuracy: 100.0%
+Validation accuracy: 70.7%
+@step 100
+Minibatch Loss: 1.524081
+Minibatch accuracy: 99.2%
+Validation accuracy: 70.0%
+@Done
+Test accuracy: 77.8%
+Training completed (elapsed time = 5.512979745864868 seconds).
+
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=3000) ...
+Test accuracy: 93.1%
+Training completed (elapsed time = 62.24311828613281 seconds).
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=3000) ...
+Test accuracy: 93.2%
+Training completed (elapsed time = 66.8185396194458 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=10000) ...
+Test accuracy: 94.4%
+Training completed (elapsed time = 202.14973902702332 seconds).
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=10000) ...
+Test accuracy: 94.8%
+Training completed (elapsed time = 204.2220106124878 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=100000) ...
+Test accuracy: 94.9%
+Training completed (elapsed time = 1941.7539293766022 seconds).
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=100000) ...
+Test accuracy: 95.8%
+Training completed (elapsed time = 2001.5589871406555 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=200000) ...
+Test accuracy: 94.3%
+Training completed (elapsed time = 7683.689193487167 seconds).
+
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=200000) ...
+Test accuracy: 95.8%
+Training completed (elapsed time = 4134.142149925232 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Trying to load Sanitized dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST_sanitized.pickle
+Loaded Sanitized data.
+  Loaded Sanitized Training set:  (184721, 28, 28) (184721,)
+  Loaded Sanitized Validation set:  (10000, 28, 28) (10000,)
+  Loaded Sanitized Test set:  (10000, 28, 28) (10000,)
+Reformatting Sanitized data...
+  Reshaped Sanitized Training set: (184721, 784) (184721, 10)
+  Reshaped Sanitized Validation set: (10000, 784) (10000, 10)
+  Reshaped Sanitized Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 1024 node RELU hidden layer
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=184721) ...
+Test accuracy: 94.6%
+Training completed (elapsed time = 3840.8956480026245 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=3000) ...
+Test accuracy: 93.8%
+Training completed (elapsed time = 102.87272787094116 seconds).
+
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 (num_steps=10000) ...
+Test accuracy: 94.9%
+Training completed (elapsed time = 348.3472638130188 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=10000) ...
+Test accuracy: 95.2%
+Training completed (elapsed time = 352.3213560581207 seconds).
+
+[tensorflow] MRYAKAN-SB1:/mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets> python ~/workspace/Projects/Cruz/Udacity/Deep_Learning/exercises/mnist_train_sgd.py
+
+Enter top level directory containing the pickled dataset files [default='.']:
+Trying to load Regular dataset from pickle file /mnt/t/TEMP DOWNLOADS/Deep Learning Data Sets/notMNIST.pickle
+Loaded Regular data.
+  Loaded Regular Training set:  (200000, 28, 28) (200000,)
+  Loaded Regular Validation set:  (10000, 28, 28) (10000,)
+  Loaded Regular Test set:  (10000, 28, 28) (10000,)
+Reformatting Regular data...
+  Reshaped Regular Training set: (200000, 784) (200000, 10)
+  Reshaped Regular Validation set: (10000, 784) (10000, 10)
+  Reshaped Regular Test set: (10000, 784) (10000, 10)
+Building Stochastic Gradient Descent Graph using batch size = 128 and a 4 RELU hidden layers (num_nodes=[1024, 512, 256, 128])
+Starting training using Stochastic Gradient Descent with L2 regularization beta=0.001000 and exponential decay (num_steps=200000) ...
+Test accuracy: 96.5%
+Training completed (elapsed time = 7152.615491867065 seconds).
